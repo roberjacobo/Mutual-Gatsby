@@ -2,9 +2,12 @@ import React from "react"
 import { Link } from "gatsby"
 
 
+
 export default function Navbar() {
+
+  return(
   <div>
-    <nav class="navbar navbar-default">
+    <div class="navbar navbar-default">
       <div class="container-fluid">
           
           <div class="navbar-header"> 
@@ -19,6 +22,7 @@ export default function Navbar() {
                 <li><a >Mutual</a></li>
             </ul>
       </div>
-    </nav>
+    </div>
   </div>
+  )
 }
