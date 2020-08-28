@@ -1,12 +1,12 @@
 import React from "react"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Navbar from "../components/navbar"
 
-export default function Index() {
+
+import Header from "../components/header"
+
+export default () => {
   return (
-    <div>
-    <Navbar />
-    <h1>Header</h1>
-    </div>
+      <Header />
   )
 }
