@@ -1,14 +1,9 @@
 import React from "react"
 
-import Header from "./components/header"
+import Navbar from "../components/navbar"
 
-const IndexPage = () => (
-<Header></Header>
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-  </div>
-)
-
-export default IndexPage
+export default function Index() {
+  return (
+    <Navbar><h1>Header</h1></Navbar>
+  )
+}
