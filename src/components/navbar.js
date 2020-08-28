@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return(
   <div>
-    <div class="navbar navbar-default">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
           
           <div class="navbar-header"> 
@@ -22,7 +22,7 @@ export default function Navbar() {
                 <li><a >Mutual</a></li>
             </ul>
       </div>
-    </div>
+    </nav>
   </div>
   )
 }
