@@ -1,5 +1,6 @@
 import React from "react"
 
+/* import '../styles/global.css' */
 
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -7,8 +8,28 @@ import Footer from "../components/footer"
 export default () => {
   return (
     <div>
-      <Header />
+      <div>
+        <Header />
+      </div>
+
+        <div className="contenido__video">
+          <video className="video" width="750" height="500" controls >
+            <source src="../images/video1.mp4" type="video/mp4"/>
+          </video>
+          <div className="header">
+                <div className="textos">
+                  <div className="container-fluid">
+                        <h1 className="titulo">Funerales Rafael Paz</h1>
+                        <h3 className="subtitulo">Servicios funerarios de primer nivel</h3>
+                  </div>
+                </div>
+            </div>
+        </div>
+      
+    <div>
       <Footer />
+    </div>
+    
     </div>
   )
 }
