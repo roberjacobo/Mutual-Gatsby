@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby";
 
 /* React Bootstrap */
 import Navbar from 'react-bootstrap/Navbar'
@@ -19,12 +20,12 @@ export default function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#">Inicio</Nav.Link>
-            <Nav.Link href="#link">Nosotros</Nav.Link>
+            <Nav.Link><Link to="#">Inicio</Link></Nav.Link>
+            <Nav.Link><Link to="#link">Nosotros</Link></Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">1</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">2</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">3</NavDropdown.Item>
+              <NavDropdown.Item><Link to="#action/3.1">1</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link to="#action/3.2">2</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link to="#action/3.3">3</Link></NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Mutual</NavDropdown.Item>
             </NavDropdown>
