@@ -5,7 +5,7 @@ import '../styles/global.css'
 import Header from "../components/header"
 import Footer from "../components/footer"
 
-import cover2 from "../assets/cover2.mp4"
+import imgcover1 from "../images/imgcover1.jpg"
 
 export default function Index() {
   return (
@@ -13,11 +13,8 @@ export default function Index() {
       <div>
         <Header />
       </div>
-     
-      <div className="App">
-      <video src={cover2.mp4} type="video/mp4" className="video" width="750" height="500" autoplay loop muted controls />
-      </div>
-        
+
+      <div class="hero-image">
 
         <div className="header">
           <div className="textos">
@@ -27,6 +24,8 @@ export default function Index() {
             </div>
           </div>
         </div>
+
+      </div>
 
       
 
