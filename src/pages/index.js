@@ -5,8 +5,6 @@ import '../styles/global.css'
 import Header from "../components/header"
 import Footer from "../components/footer"
 
-import imgcover1 from "../images/imgcover1.jpg"
-
 export default function Index() {
   return (
     <div>
@@ -27,9 +25,13 @@ export default function Index() {
 
       </div>
 
+      <div className="about">
+        <p className="titulo2">Sobre Nosotros</p>
+      </div>
+
       
 
-      <div>
+      <div className="footer">
         <Footer />
       </div>
 
