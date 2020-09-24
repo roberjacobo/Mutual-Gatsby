@@ -10,32 +10,43 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 
-
 export default function Header() {
 
-  return(
+  return (
     <Container>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#">Funerales Rafael Paz</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link><Link to="#">Inicio</Link></Nav.Link>
-            <Nav.Link><Link to="#link">Nosotros</Link></Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item><Link to="#action/3.1">1</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link to="#action/3.2">2</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link to="#action/3.3">3</Link></NavDropdown.Item>
+            <Nav.Link>
+              <Link to="#">Inicio</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="#link">Nosotros</Link>
+            </Nav.Link>
+            <NavDropdown title="Más" id="basic-nav-dropdown">
+              <NavDropdown.Item>
+                <Link to="#action/3.1">Servicios</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="#action/3.2">Ubicación</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="#action/3.3">Contacto</Link>
+              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Mutual</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/login/">Mutual</Link>
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Form inline>
+                                                  {/*           <Form inline>
             <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
             <Button variant="outline-success">Búsqueda</Button>
-          </Form>
+          </Form> */}
         </Navbar.Collapse>
       </Navbar>
-  </Container>
+    </Container>
   )
 }

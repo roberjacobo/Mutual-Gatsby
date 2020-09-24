@@ -1,8 +1,17 @@
+
 html, body { height: 100%; background-color: rgb(255, 255, 255); }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
 
-
+.Layout-general {
+  margin-left: 50px;
+  margin-right: 50px;
+}
 
 .header {
     width: 100%;
@@ -22,6 +31,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .header .titulo {
   font-size: 120px;
+  color: whitesmoke;
 }
 
 .header .subtitulo {
@@ -32,16 +42,50 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/imgcover1.jpg");
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/imgcover1.jpg"); */
 
   /* Set a specific height */
-  height: 50%;
+  /* height: 50%; */
 
   /* Position and center the image to scale nicely on all screens */
-  background-position: center;
+  /* background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  position: relative; */
+}
+
+.contenido__video{
+  background: #ffffff;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.video{
+  position: absolute;
+  max-width: 300%;
+  width: 100%;
+}
+
+/* media queries (personalizarlo a su antojo)*/
+@media(max-width: 900px){
+.video{
+  width: 150%;
+}
+}
+@media(max-width: 650px){
+  .video{
+  width: 280%;
+  }
+}
+@media(max-width: 480px){
+  .video{
+  width: 300%;
+}
 }
 
 .titulo2 {
@@ -53,7 +97,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .about {
-  margin-bottom: 0px;
+  margin-bottom: 25px;
 }
 
 .texto1 {
@@ -96,7 +140,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
   position: relative;
   flex-wrap: wrap;
-
 }
 
 .imagenes {
@@ -107,7 +150,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .imagenes img {
-  width: 100%;
+  width: 200%;
   height: 100%;
   object-fit: cover;
 }
@@ -119,7 +162,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
   height: 100%;
   background: rgba(52, 73, 94, 0.815);
-  
 }
 
 .encima h2 {
@@ -172,7 +214,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-attachment: fixed;
   background-position: center;
   padding-top: 130px;
-  
 }
 
 .sesgoabajo-unico {

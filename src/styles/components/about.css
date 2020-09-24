@@ -1,0 +1,23 @@
+.titulo2 {
+    font-size: 120px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    color: rgb(15, 15, 15);
+    text-align: center;
+}
+
+.about {
+    margin-top: 100px;
+    margin-bottom: 25px;
+}
+
+.texto1 {
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 0px;
+    color: rgb(15, 15, 15);
+    text-align: center;
+}
