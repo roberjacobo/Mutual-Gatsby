@@ -1,0 +1,21 @@
+.columnas-1 {
+  display: flex;
+  justify-content: row;
+}
+
+.columnas-2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.columnas-3 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-container {
+  display: flex;
+  margin-left: 0px;
+  margin-right: 0px;
+  justify-content: start;
+}

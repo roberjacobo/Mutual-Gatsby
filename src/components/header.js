@@ -6,9 +6,9 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
-import Button from 'react-bootstrap/Button'
+/* import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
+import FormControl from 'react-bootstrap/FormControl' */
 
 export default function Header() {
 
@@ -37,11 +37,11 @@ export default function Header() {
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <Link to="/login/">Mutual</Link>
+                <Link to="/loginpage/">Mutual</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-                                                  {/*           <Form inline>
+          {/*           <Form inline>
             <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
             <Button variant="outline-success">Búsqueda</Button>
           </Form> */}
