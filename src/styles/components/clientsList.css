@@ -1,0 +1,12 @@
+.table-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.btnClient-Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

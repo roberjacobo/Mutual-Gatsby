@@ -13,9 +13,14 @@
   justify-content: space-around;
 }
 
+.container {
+  margin-top: 20px;
+}
+
 .button-container {
   display: flex;
   margin-left: 0px;
   margin-right: 0px;
-  justify-content: start;
+  margin-bottom: 30px;
+  justify-content: center;
 }

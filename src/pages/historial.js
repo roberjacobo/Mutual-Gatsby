@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -13,7 +14,9 @@ function historial() {
       <Header />
       <div className="btn-form-container">
         <div className="btn-container">
-          <Button variant="secondary">Suscribir Cliente</Button>
+          <Link to="/nuevoCliente/">
+            <Button variant="secondary">Suscribir Cliente</Button>
+          </Link>
           <Button variant="success">Registrar Pago</Button>
           <Button variant="danger">Egreso</Button>
           <Button variant="warning">Historial de Pagos</Button>

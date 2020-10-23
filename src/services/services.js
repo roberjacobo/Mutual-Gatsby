@@ -1,5 +1,4 @@
 import http from "../http-common"
-
 //Login
 const login = () => {
   return http.post("/login")

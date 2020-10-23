@@ -1,9 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import axios from "axios"
-import services from "../services/services"
-
 import user from "../images/user.png"
 
 import InputGroup from "react-bootstrap/InputGroup"
@@ -12,17 +9,6 @@ import FormControl from "react-bootstrap/FormControl"
 import Button from "react-bootstrap/Button"
 
 const Login = () => {
-
-  const loginRequest = () => {
-    axios.post('http://localhost:3003/api/v1/login', {
-      email    : this.state.email,
-      password : this.state.password
-    })
-  .then(user => {
-    /* */
-  })
-  }
-
   return (
     <>
       <div className="login-container">
@@ -46,12 +32,16 @@ const Login = () => {
           <br />
 
           <div className="button-container">
-            <Button variant="success" className="btnVerde" onClick={loginRequest()}>
-              Aceptar
-            </Button>
+                <Link to="/mutual/">
+                  <Button variant="success" className="btnVerde">
+                    Aceptar
+                  </Button>
+            </Link>
+            <Link to="/">
             <Button variant="danger" className="btnRojo">
               Cancelar
             </Button>
+            </Link>
           </div>
         </div>
       </div>

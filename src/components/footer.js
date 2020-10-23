@@ -51,11 +51,9 @@ export default function Footer () {
               <h4>¡Síguenos!</h4>
               <ul>
                 <li>
-                  <a>
-                    <Link to="https://www.facebook.com/FuneralesRafaelPaz/">
+                    <a href="https://www.facebook.com/FuneralesRafaelPaz/">
                       Facebook
-                    </Link>
-                  </a>
+                    </a>            
                 </li>
               </ul>
             </div>
