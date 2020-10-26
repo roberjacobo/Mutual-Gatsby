@@ -8,7 +8,8 @@ import Button from "react-bootstrap/Button"
 
 const ClientsList = () => {
   const { clients, removeClient } = useContext(GlobalContext)
-
+  console.log(readAllClients())
+  
   return (
     <div className="table-container">
       <Table striped bordered hover>

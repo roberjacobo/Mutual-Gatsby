@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react"
 import AppReducer from "./AppReducer"
 import axios from "../http-common"
 
-const defaultState = {
+/* const defaultState = {
   clients: [
     {
       id: 1,
@@ -22,14 +22,18 @@ const defaultState = {
     { id: 2, name: "Cliente 2" },
     { id: 3, name: "Cliente 3" },
   ],
+} */
+
+const initialState = {
+  clients: []
 }
 
 //Create Context
-export const GlobalContext = React.createContext(defaultState)
+export const GlobalContext = React.createContext(initialState)
 
 //Provider Component
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, defaultState)
+  const [state, dispatch] = useReducer(AppReducer, initialState)
 
   //Actions
   const removeClient = id => {
@@ -53,16 +57,16 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
-  const readAllClients = client => {
+  const readAllClients = () => {    //recibe todos los clientes por eso debe ser "clients"
     axios
       .get("http://localhost:3000/api/clients/")
       .then(
-        dispatch({
-          type: "READ_CLIENTS",
-          payload: client,
-        })
+        response => {
+          console.log(response.data)
+          /* this.clients = response.data */
+        }
       )
-      .catch(console.log("error"))
+      .catch(console.log("error de lectura de clientes"))
   }
 
   return (
