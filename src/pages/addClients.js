@@ -7,7 +7,6 @@ import Footer from "../components/footer"
 import * as yup from "yup"
 import { Formik } from "formik"
 
-import { GlobalContext } from "../context/globalState"
 import { Link } from "gatsby"
 
 import Button from "react-bootstrap/Button"

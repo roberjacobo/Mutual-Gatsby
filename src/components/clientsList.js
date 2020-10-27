@@ -1,14 +1,11 @@
 import React, { useContext } from "react"
 import Table from "react-bootstrap/Table"
 
-import { GlobalContext } from "../context/globalState"
 
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
 const ClientsList = () => {
-  const { clients, removeClient } = useContext(GlobalContext)
-  console.log(readAllClients())
   
   return (
     <div className="table-container">
