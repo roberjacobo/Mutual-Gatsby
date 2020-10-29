@@ -14,8 +14,6 @@ import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
-import {GlobalProvider} from '../context/globalState'
-
 export default function Mutual() {
   return (
     <>
@@ -33,9 +31,9 @@ export default function Mutual() {
         </div>
       </div>
 
-      <GlobalProvider>
+      {/* <GlobalProvider> */}
         <ClientsList />
-      </GlobalProvider>
+     {/*  </GlobalProvider> */}
         <div className="registroPago-container">
           <h2>Registro de pagos hechos por los clientes</h2>
         <RegistroPago />

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React from "react"
 import "../styles/addClient.css"
 
 import Header from "../components/header"
@@ -7,7 +7,7 @@ import Footer from "../components/footer"
 import * as yup from "yup"
 import { Formik } from "formik"
 
-import { Link } from "gatsby"
+/* import { Link } from "gatsby" */
 
 import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
@@ -30,27 +30,17 @@ const schema = yup.object({
 })
 
 const AddClients = () => {
-  const [name, setName] = useState("")
-  const { addClients } = useContext(GlobalContext)
-  const onSubmit = () => {
-    const newClient = {
-      id: 4,
-      name: "user Four",
-    }
-    addClients(newClient)
-  }
-
   return (
     <>
       <Header />
       <div className="label-addClient">
         <Formik
-          validationSchema={schema}
-          onSubmit={onSubmit}
+          /* validationSchema={schema}
+          onSubmit={onSubmit} 
           initialValues={{
             nombre: "",
             apellido: "",
-          }}
+          }} */
         >
           {({
             handleSubmit,

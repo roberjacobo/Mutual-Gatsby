@@ -1,12 +1,10 @@
-import React, { useContext } from "react"
+import React from "react"
 import Table from "react-bootstrap/Table"
-
 
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
 const ClientsList = () => {
-  
   return (
     <div className="table-container">
       <Table striped bordered hover>
@@ -29,9 +27,9 @@ const ClientsList = () => {
           </tr>
         </thead>
         <tbody>
-          {clients.map(client => (
+          {/* {clients.map(client => ( */}
             <tr>
-              <td>{client.id}</td>
+              {/* <td>{client.id}</td>
               <td>{client.name}</td>
               <td>{client.PrimerApellido}</td>
               <td>{client.SegundoApellido}</td>
@@ -43,20 +41,20 @@ const ClientsList = () => {
               <td>{client.Correo}</td>
               <td>${client.Adeudo}.00</td>
               <td>{client.Fecha}</td>
-              <td>{client.Tipo}</td>
+              <td>{client.Tipo}</td> */}
               <td>
                 <div className="btnClient-Container">
                   <Button variant="warning">Actualizar</Button>
                   <Button
-                    onClick={() => removeClient(client.id)}
-                    variant="danger"
+                  /*  onClick={() => removeClient(client.id)}
+                    variant="danger" */
                   >
                     Eliminar
                   </Button>
                 </div>
               </td>
             </tr>
-          ))}
+            {/* ))} */}
         </tbody>
       </Table>
     </div>
