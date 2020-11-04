@@ -1,17 +1,17 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER } from "./actionTypes"
+import { ADD_CLIENTE, TOGGLE_CLIENTE, SET_FILTER } from "./actionTypes"
 
-let nextTodoId = 0
+let nextClienteId = 0
 
-export const addTodo = conten => ({
-  type: ADD_TODO,
+export const addCliente = content => ({
+  type: ADD_CLIENTE,
   payload: {
-    id: ++nextTodoId,
+    id: ++nextClienteId,
     content,
   },
 })
 
-export const toggleTodo = id => ({
-  type: TOGGLE_TODO,
+export const toggleCliente = id => ({
+  type: TOGGLE_CLIENTE,
   payload: { id },
 })
 

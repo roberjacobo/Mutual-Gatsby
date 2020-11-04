@@ -1,3 +1,3 @@
-export const ADD_TODO = "ADD_TODO"
-export const TOGGLE_TODO = "TOGGLE_TODO"
+export const ADD_CLIENTE = "ADD_CLIENTE"
+export const TOGGLE_CLIENTE = "TOGGLE_CLIENTE"
 export const SET_FILTER = "SET_FILTER"

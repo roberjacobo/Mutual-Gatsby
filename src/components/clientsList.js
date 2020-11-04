@@ -3,12 +3,10 @@ import Table from "react-bootstrap/Table"
 
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
-import Todo from "./todo"
 
 const ClientsList = () => {
   return (
     <div className="table-container">
-      <Todo />
       <Table striped bordered hover>
         <thead>
           <tr>

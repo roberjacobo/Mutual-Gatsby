@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
 import visibilityFilter from "./visibilityFilter"
-import todos from "./todos"
+import todos from "./clientes"
 
 export default combineReducers({ todos, visibilityFilter })
