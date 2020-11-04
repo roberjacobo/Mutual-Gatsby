@@ -3,10 +3,12 @@ import Table from "react-bootstrap/Table"
 
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
+import Todo from "./todo"
 
 const ClientsList = () => {
   return (
     <div className="table-container">
+      <Todo />
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -28,8 +30,8 @@ const ClientsList = () => {
         </thead>
         <tbody>
           {/* {clients.map(client => ( */}
-            <tr>
-              {/* <td>{client.id}</td>
+          <tr>
+            {/* <td>{client.id}</td>
               <td>{client.name}</td>
               <td>{client.PrimerApellido}</td>
               <td>{client.SegundoApellido}</td>
@@ -42,19 +44,19 @@ const ClientsList = () => {
               <td>${client.Adeudo}.00</td>
               <td>{client.Fecha}</td>
               <td>{client.Tipo}</td> */}
-              <td>
-                <div className="btnClient-Container">
-                  <Button variant="warning">Actualizar</Button>
-                  <Button
-                  /*  onClick={() => removeClient(client.id)}
+            <td>
+              <div className="btnClient-Container">
+                <Button variant="warning">Actualizar</Button>
+                <Button
+                /*  onClick={() => removeClient(client.id)}
                     variant="danger" */
-                  >
-                    Eliminar
-                  </Button>
-                </div>
-              </td>
-            </tr>
-            {/* ))} */}
+                >
+                  Eliminar
+                </Button>
+              </div>
+            </td>
+          </tr>
+          {/* ))} */}
         </tbody>
       </Table>
     </div>
