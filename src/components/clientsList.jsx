@@ -4,14 +4,15 @@ import Table from "react-bootstrap/Table"
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
-const ClientsList = () => {
+const ClientsList = ({clients}) => {
+
   return (
     <div className="table-container">
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Nombre(s)</th>
             <th>Primer Apellido</th>
             <th>Segundo Apellido</th>
             <th>CURP</th>
@@ -27,22 +28,22 @@ const ClientsList = () => {
           </tr>
         </thead>
         <tbody>
-          {/* {clients.map(client => ( */}
-          <tr>
-            {/* <td>{client.id}</td>
-              <td>{client.name}</td>
-              <td>{client.PrimerApellido}</td>
-              <td>{client.SegundoApellido}</td>
-              <td>{client.Curp}</td>
-              <td>{client.Colonia}</td>
-              <td>{client.Direccion}</td>
-              <td>{client.Celular}</td>
-              <td>{client.Telefono}</td>
-              <td>{client.Correo}</td>
-              <td>${client.Adeudo}.00</td>
-              <td>{client.Fecha}</td>
-              <td>{client.Tipo}</td> */}
-            <td>
+          {clients?clients.map(clients => (
+            <tr>
+              <td>{clients._id}</td>
+              <td>{clients.Nombre}</td>
+              <td>{clients.ApellidoPat}</td>
+              <td>{clients.ApellidoMat}</td>
+              <td>{clients.Curp}</td>
+              <td>{clients.Colonia}</td>
+              <td>{clients.Direccion}</td>
+              <td>{clients.Celular}</td>
+              <td>{clients.Telefono}</td>
+              <td>{clients.Correo}</td>
+              <td>${clients.Adeudo}.00</td>
+              <td>{clients.FechaInscripcion}</td>
+              <td>{clients.Tipo}</td> 
+            <td> 
               <div className="btnClient-Container">
                 <Button variant="warning">Actualizar</Button>
                 <Button
@@ -54,7 +55,8 @@ const ClientsList = () => {
               </div>
             </td>
           </tr>
-          {/* ))} */}
+          )):""}
+            {console.log(clients)}
         </tbody>
       </Table>
     </div>

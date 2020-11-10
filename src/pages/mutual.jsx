@@ -1,5 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
+
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import  * as Actions from "../redux/actions/clients"
 
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -14,9 +18,13 @@ import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
-import ""
+function Mutual({clients, getClients}) {
 
-export default function Mutual() {
+  const [clientes, setClients] = useState([])
+  useEffect(() => {
+    getClients()
+  }, [clientes]);
+
   return (
     <>
       <Header />
@@ -32,10 +40,9 @@ export default function Mutual() {
           <div><FormControl /></div>
         </div>
       </div>
-
-      {/* <GlobalProvider> */}
-        <ClientsList />
-     {/*  </GlobalProvider> */}
+        <div className="egresos-container">
+        <Fichatotales clients={clients}/>
+        </div>
         <div className="registroPago-container">
           <h2>Registro de pagos hechos por los clientes</h2>
         <RegistroPago />
@@ -44,10 +51,18 @@ export default function Mutual() {
           <h2>Registro de egresos</h2>
         <Egresos />
         </div>
-        <div className="egresos-container">
-        <Fichatotales />
-        </div>
+          <ClientsList clients={clients} />
       <Footer />
     </>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    clients: state.clients.clients
+  }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators (Actions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Mutual)

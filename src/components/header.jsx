@@ -37,7 +37,7 @@ export default function Header() {
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <Link to="/loginpage/">Mutual</Link>
+                <Link to="/loginPage/">Mutual</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

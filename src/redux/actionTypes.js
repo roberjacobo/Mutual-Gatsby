@@ -1,3 +1,2 @@
-export const ADD_CLIENTE = "ADD_CLIENTE"
-export const TOGGLE_CLIENTE = "TOGGLE_CLIENTE"
-export const SET_FILTER = "SET_FILTER"
+export const READ_ALL_CLIENTS = "READ_ALL_CLIENTS"
+export const ADD_CLIENT = "ADD_CLIENT"
