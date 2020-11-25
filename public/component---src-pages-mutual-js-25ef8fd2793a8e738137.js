@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{JFKs:function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return r}));var u=t("q1tI"),a=t.n(u);function r(){return a.a.createElement("div",null,a.a.createElement("h1",null,"mutual"))}}}]);
-//# sourceMappingURL=component---src-pages-mutual-js-25ef8fd2793a8e738137.js.map

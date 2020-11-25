@@ -34,6 +34,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/Asset91.png`, // This path is relative to the root of the site.
       },
-    },
+      },
   ],
 }
