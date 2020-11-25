@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{lOvr:function(n,e,a){},yEVI:function(n,e,a){"use strict";a.r(e);var t=a("q1tI"),l=a.n(t);a("lOvr");e.default=function(){return l.a.createElement("div",{className:"panelFlexContainer"},l.a.createElement(l.a.Fragment,null,"hola"))}}}]);
+//# sourceMappingURL=component---src-pages-panel-empleado-jsx-67476534ec499442f849.js.map

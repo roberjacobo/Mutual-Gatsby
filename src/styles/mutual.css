@@ -41,6 +41,15 @@
   margin-bottom: 45px;
 }
 
+.lista-container {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.logOut {
+  display: flex;
+}
+
 @media only screen and (max-width: 800px) {
   .formulario-container {
     margin-left: 5px;
@@ -58,5 +67,9 @@
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 5px;
+  }
+  .lista-container {
+    margin-left: 25%;
+    margin-right: 25%;
   }
 }

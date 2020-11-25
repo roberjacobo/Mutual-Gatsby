@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import  * as Actions from "../redux/actions/clients"
+import * as employeeActions from "../redux/actions/employee"
 
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -18,23 +19,33 @@ import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
-function Mutual({clients, getClients}) {
+function Mutual({ clients, getClients, employees, logout }) {
 
   const [clientes, setClients] = useState([])
   useEffect(() => {
     getClients()
   }, [clientes]);
 
+  useEffect(() => {
+    const { ok } = employees
+    if (!ok) {
+      navigate('/loginPage/')
+    } else {
+      console.log('Drake, y el logout?')
+    }
+  }, [employees]);
+
   return (
     <>
       <Header />
       <div className="btn-form-container">
         <div className="btn-container">
-        <Link to="/addClients/"><Button variant="secondary">Suscribir Cliente</Button></Link>
+          <Link to="/addClient/"><Button variant="secondary">Suscribir Cliente</Button></Link>
           <Button variant="success">Registrar Pago</Button>
           <Button variant="danger">Egreso</Button>
           <Button variant="warning"><Link to="/historial/">Historial de Pagos</Link></Button>
         </div>
+        <div className="logOut"><Button onClick={logout} variant="danger">Salir de la Mutual</Button></div>
         <div className="form-container">
           <p>Buscar</p>
           <div><FormControl /></div>
@@ -51,7 +62,9 @@ function Mutual({clients, getClients}) {
           <h2>Registro de egresos</h2>
         <Egresos />
         </div>
+      <div className="lista-container">
           <ClientsList clients={clients} />
+      </div>
       <Footer />
     </>
   )
@@ -59,10 +72,11 @@ function Mutual({clients, getClients}) {
 
 const mapStateToProps = (state) => {
   return {
-    clients: state.clients.clients
+    clients: state.clients.clients,
+    employees: state.employees.employees,
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators (Actions, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ ...Actions, ...employeeActions }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mutual)

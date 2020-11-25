@@ -3,8 +3,12 @@ import { persistStore, persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import thunk from "redux-thunk"
 import clients from "./reducers/clients"
+import employees from "./reducers/employee"
 
-const rootReducer = combineReducers({ clients: clients })
+const rootReducer = combineReducers({
+  clients: clients,
+  employees: employees,
+})
 
 const persistConfig = {
   key: "root",

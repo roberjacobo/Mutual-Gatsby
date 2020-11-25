@@ -56,7 +56,6 @@ const ClientsList = ({clients}) => {
             </td>
           </tr>
           )):""}
-            {console.log(clients)}
         </tbody>
       </Table>
     </div>

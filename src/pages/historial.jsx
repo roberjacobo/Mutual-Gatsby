@@ -14,7 +14,7 @@ function historial() {
       <Header />
       <div className="btn-form-container">
         <div className="btn-container">
-          <Link to="/nuevoCliente/">
+          <Link to="/addClient/">
             <Button variant="secondary">Suscribir Cliente</Button>
           </Link>
           <Button variant="success">Registrar Pago</Button>
