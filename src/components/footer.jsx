@@ -12,12 +12,9 @@ export default function Footer () {
       <div>
         <footer className="footer-bs">
           <div className="row">
-            <div className="col-md-6 footer-brand animated fadeInLeft">
+            <div className="col-md-4 footer-brand animated fadeInLeft">
               <img src={Logo} alt="Logotipo" />
-              <p>
-                Funerales Rafael Paz
-              </p>
-              <p>© 2020 BS3 UI Kit, Todos los derechos reservados</p>
+              <p>© 2020 Funerales Rafael Paz, Desarrollado por <Link href="_blank" to="https://www.quantumstudios.dev">Quantum Studios</Link></p>
             </div>
 
             <div className="col-md-3 footer-nav animated fadeInUp">
@@ -84,9 +81,6 @@ export default function Footer () {
             </div> */}
           </div>
         </footer>
-        <section>
-          <p>Diseñado por Roberto J.</p>
-        </section>
       </div>
     )
 }

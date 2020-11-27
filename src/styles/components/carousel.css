@@ -3,13 +3,6 @@
     justify-content: center;
 }
 
-.titulo {
-    font-size: 120px;
-    color: black;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    align-items: center;
-}
-
 .carousel-margin {
     margin-top: 5px;
     margin-bottom: 50px;

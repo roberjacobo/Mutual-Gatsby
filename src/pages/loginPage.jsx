@@ -11,7 +11,6 @@ export default function LoginPage() {
     <>
       <Header />
       <Login />
-      <Footer />
     </>
   )
 }

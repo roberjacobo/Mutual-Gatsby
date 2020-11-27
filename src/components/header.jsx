@@ -9,38 +9,35 @@ import Nav from 'react-bootstrap/Nav'
 /* import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl' */
+import Logo from "../images/Logo.png"
 
-export default function Header() {
+export default function Header({ app }) {
 
   return (
     <Container>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#">Funerales Rafael Paz</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
+      <Navbar bg="transparent" expand="lg">
+        <Navbar.Brand href="#"><Link to="/"><img src={Logo} alt="Logotipo" /></Link></Navbar.Brand>
+        <Navbar.Collapse id="basic-navbar-nav" style={ app ? { display: 'block!important' } : {} }>
+          {!app ? <Nav className="mr-auto">
             <Nav.Link>
-              <Link to="#">Inicio</Link>
+              <Link to="/">INICIO</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to="#link">Nosotros</Link>
+              <Link to="#link">NOSOTROS</Link>
             </Nav.Link>
-            <NavDropdown title="Más" id="basic-nav-dropdown">
-              <NavDropdown.Item>
-                <Link to="#action/3.1">Servicios</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="#action/3.2">Ubicación</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="#action/3.3">Contacto</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item>
-                <Link to="/loginPage/">Mutual</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+            <Nav.Link>
+              <Link to="#action/3.1">SERVICIOS</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="#link">UBICACIÓN</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to="#action/3.1">CONTACTO</Link>
+            </Nav.Link>
+          </Nav> : ''}
+          <div className="nav-right">
+            <Link className="a-btn" to="/loginPage">MUTUAL</Link>
+          </div>
           {/*           <Form inline>
             <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
             <Button variant="outline-success">Búsqueda</Button>
