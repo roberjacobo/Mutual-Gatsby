@@ -9,9 +9,7 @@ const parseClients = data => ({
 })
 
 export const getClients = () => async dispatch => {
-  const response = await axios.get(
-    "https://backend-yuy6unuyba-uw.a.run.app/api/clients"
-  )
+  const response = await axios.get("http://localhost:3000/api/clients")
     const { data } = response
     return dispatch(parseClients(data))
   }
@@ -22,22 +20,30 @@ export const getClients = () => async dispatch => {
     payload: data,
   })
   
- /*  export const editClient = () = */
-  
-  
+  export const editClient = data => async dispatch => {
+    const response = await axios({
+      url: "http://localhost:3000/api/clients/",
+      method: "PUT",
+      headers,
+      data,
+    })
+    const { data } = response
+    alert(response.data.status)
+    return dispatch(editClients(data))
+  }
+
   //Ingresar nuevos clientes
   const addNewClient = data => ({
     type: ADD_CLIENT,
     payload: data,
   })
-
 const headers = {
   "Content-Type": "application/json",
 }
 
 export const addClient = data => async dispatch => {
   const reqObj = {
-    url: "https://backend-yuy6unuyba-uw.a.run.app/api/clients",
+    url: "http://localhost:3000/api/clients",
     method: "POST",
     headers,
     data,

@@ -30,8 +30,6 @@ function Mutual({ clients, getClients, employees, logout }) {
     const { ok } = employees
     if (!ok) {
       navigate('/loginPage/')
-    } else {
-      console.log('Drake, y el logout?')
     }
   }, [employees]);
 

@@ -1,4 +1,4 @@
-import { READ_ALL_CLIENTS, ADD_CLIENT, LOGIN } from "../actionTypes"
+import { READ_ALL_CLIENTS, ADD_CLIENT, EDIT_CLIENT } from "../actionTypes"
 
 const initialState = {
   clients: [],
@@ -16,6 +16,8 @@ const clientsReducer = (state = initialState, action) => {
         clients: action.payload,
       }
       return newAddState
+    case EDIT_CLIENT:
+      return { clients: action.payload }
     default:
       return state
   }

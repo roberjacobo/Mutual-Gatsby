@@ -13,14 +13,13 @@ import Footer from "../components/footer"
 import * as yup from "yup"
 import { Formik } from "formik"
 
-/* import { Link } from "gatsby" */
-
 import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 
 const schema = yup.object({
+  UserId: yup.string().required(),
   Nombre: yup.string().required(),
   ApellidoPat: yup.string().required(),
   ApellidoMat: yup.string().required(),
@@ -33,30 +32,45 @@ const schema = yup.object({
   Adeudo: yup.string().required(),
   Tipo: yup.string().required(),
   Terms: yup.bool().required(),
+  FechaInscripcion: yup.bool().required(),
 })
 
-const AddClient = ({ addClient }) => {
-
-  const date = new Date()
-  const fechaChida = date.toISOString()
+const ClientView = ({
+  //actions
+  addClient,
+  editClient,
+  //props data
+  location: { state: { id } },
+  //redux prop
+  clients
+}) => {
+  console.log('id props: ', id)
+  /* const client = status.clients.filter(client => client.id === id)[0] */
+  
+  const client = clients.filter(client => client._id === id)[0] || null
 
   //Inicializa el estado que se enviará con cadenas vacías
-  const [values, setValues] = useState({
-    Estado: true,
-    Tipo: '',
-    Nombre: '',
-    ApellidoPat: '',
-    ApellidoMat: '',
-    Curp: '',
-    Colonia: '',
-    Direccion: '',
-    Celular: '',
-    Telefono: '',
-    Correo: '',
-    Adeudo: '',
-    FechaInscripcion: fechaChida,
-  })
+const [values, setValues] = useState({
+Estado: true,
+  UserId: client ? client.UserId : '',
+  Tipo: client ? client.Tipo : '',
+  Nombre: client ? client.Nombre : '',
+  ApellidoPat: client ? client.ApellidoPat : '',
+  ApellidoMat: client ? client.ApellidoMat : '',
+  Curp: client ? client.Curp : '',
+  Colonia: client ? client.Colonia : '',
+  Direccion: client ? client.Direccion : '',
+  Celular: client ? client.Celular : '',
+  Telefono: client ? client.Telefono : '',
+  Correo: client ? client.Correo : '',
+  Adeudo: client ? client.Adeudo : '',
+  FechaInscripcion: client ? client.FechaInscripcion : '',
+})
 
+/*   if (fakeId) {
+    setValues({ Nombre: client.Nombre })
+    fakeId = null
+  } */
 
   //Función que vigila el cambio de estado del formulario
   const handleChange = (event) => {
@@ -83,6 +97,7 @@ const AddClient = ({ addClient }) => {
             onSubmit={sendData}
             initialValues={{
               Estado: true,
+              UserId: '',
               Tipo: '',
               Nombre: '',
               ApellidoPat: '',
@@ -94,7 +109,7 @@ const AddClient = ({ addClient }) => {
               Telefono: '',
               Correo: '',
               Adeudo: '',
-              FechaInscripcion: fechaChida,
+              FechaInscripcion: '',
             }}
           >
             {({
@@ -106,6 +121,24 @@ const AddClient = ({ addClient }) => {
             }) => (
                 <Form noValidate onSubmit={sendData}>
                   <Form.Row>
+
+                    <Form.Group as={Col} md="4" controlId="validationFormik01">
+                      <Form.Label>Identificador</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Identificador"
+                        name="UserId"
+                        value={values.UserId}
+                        onChange={handleChange}
+                        isValid={touched.UserId && !errors.UserId}
+                        isInvalid={!!errors.UserId}
+                      />
+                      <Form.Control.Feedback>se ve bien</Form.Control.Feedback>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.Nombre}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
                     <Form.Group as={Col} md="4" controlId="validationFormik01">
                       <Form.Label>Nombre</Form.Label>
                       <Form.Control
@@ -306,6 +339,23 @@ const AddClient = ({ addClient }) => {
                         {errors.Tipo}
                       </Form.Control.Feedback>
                     </Form.Group>
+
+                    <Form.Group as={Col} md="2" controlId="validationFormik07">
+                      <Form.Label>Fecha de ingreso</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="FechaInscripcion"
+                        value={values.FechaInscripcion}
+                        onChange={handleChange}
+                        isValid={touched.FechaInscripcion && !errors.FechaInscripcion}
+                        isInvalid={!!errors.FechaInscripcion}
+                      />
+                      <Form.Control.Feedback>Se ve bien</Form.Control.Feedback>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.FechaInscripcion}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
                   </Form.Row>
 
                   <Form.Group>
@@ -340,4 +390,4 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddClient)
+export default connect(mapStateToProps, mapDispatchToProps)(ClientView)
