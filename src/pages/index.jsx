@@ -24,12 +24,17 @@ export default function Index() {
   return (
     <div>
       <SEO title="SFRP"/>
-      <div>
+      <div className="nav-wrapper">
         <Header />
       </div>
 
-      <div>
-
+      <div className="hero-wrapper">
+            <div className="hero-overlay">
+              <div className="hero-text">
+                <h1 className="titulo">Funerales Rafael Paz</h1>
+                <h2 className="subtitulo">Servicios funerarios de primer nivel</h2>
+              </div>
+            </div>
             <div className="contenido_video">
                 {/* autoplay: propiedad para que se reproduzca una ves que carga la página
                 loop: propiedad para el vídeo se repita infinitamente
@@ -40,16 +45,6 @@ export default function Index() {
               <source src={video} type="video/webm" />
               </video>
             </div>
-        
-        <div className="header">
-          <div className="textos">
-            <div className="container-fluid">
-            <img src={Logo} alt="Logotipo" />
-              <h1 className="titulo">Funerales Rafael Paz</h1>
-              <h3 className="subtitulo">Servicios funerarios de primer nivel</h3>
-            </div>
-          </div>
-        </div>
 
       </div>
       <div className="Layout-general">
@@ -60,27 +55,23 @@ export default function Index() {
         <div className="sesgoarriba"></div>
         <div className="imagenes"><img src={funerales15} alt="primera foto caja" /></div>
         <div className="imagenes"><img src={funerales16} alt="segunda foto caja" /></div>
-
         <div className="imagenes"><img src={funerales17} alt="tercera foto caja" />
-
               <div className="encima">
                 <h2>Cajas</h2>
               </div>
         </div>
-
         <div className="imagenes"><img src={funerales18} alt="cuarta foto caja" /></div>
         <div className="imagenes"><img src={funerales19} alt="quinta foto caja" /></div>
         <div className="sesgoabajo"></div>
     </div>
 
-    <div>
-      <Carousel />
-    </div>
-    
-    <div>
-      <Valores />
+      <div className="container">
+        <Carousel />
       </div>
-    </div>
+      <div className="container">
+        <Valores />
+        </div>
+      </div>
       <Footer />
     </div>
   );

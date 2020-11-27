@@ -37,7 +37,6 @@ function Mutual({ clients, getClients, employees, logout }) {
 
   return (
     <>
-      <Header />
       <div className="btn-form-container">
         <div className="btn-container">
           <Link to="/addClient/"><Button variant="secondary">Suscribir Cliente</Button></Link>
@@ -65,7 +64,6 @@ function Mutual({ clients, getClients, employees, logout }) {
       <div className="lista-container">
           <ClientsList clients={clients} />
       </div>
-      <Footer />
     </>
   )
 }
