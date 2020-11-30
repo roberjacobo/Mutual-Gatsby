@@ -19,7 +19,7 @@ import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
-function Mutual({ clients, getClients, employees, logout }) {
+function Mutual({ clients, getClients, employees, logout, deleteClients }) {
 
   const [clientes, setClients] = useState([])
   useEffect(() => {
@@ -31,7 +31,7 @@ function Mutual({ clients, getClients, employees, logout }) {
     if (!ok) {
       navigate('/loginPage/')
     } else {
-      console.log('Drake, y el logout?')
+      console.log('')
     }
   }, [employees]);
 
@@ -46,8 +46,6 @@ function Mutual({ clients, getClients, employees, logout }) {
         </div>
         <div className="logOut"><Button onClick={logout} variant="danger">Salir de la Mutual</Button></div>
         <div className="form-container">
-          <p>Buscar</p>
-          <div><FormControl /></div>
         </div>
       </div>
         <div className="egresos-container">
@@ -61,6 +59,8 @@ function Mutual({ clients, getClients, employees, logout }) {
           <h2>Registro de egresos</h2>
         <Egresos />
         </div>
+      <p>Buscar</p>
+      <div className=""><FormControl /></div>
       <div className="lista-container">
           <ClientsList clients={clients} />
       </div>

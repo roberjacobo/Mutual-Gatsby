@@ -1,4 +1,10 @@
-import { READ_ALL_CLIENTS, ADD_CLIENT, EDIT_CLIENT } from "../actionTypes"
+import {
+  READ_ALL_CLIENTS,
+  ADD_CLIENT,
+  EDIT_CLIENT,
+  DELETE_CLIENT,
+} from "../actionTypes"
+
 import axios from "axios"
 
 
@@ -9,22 +15,28 @@ const parseClients = data => ({
 })
 
 export const getClients = () => async dispatch => {
-  const response = await axios.get(
-    "https://backend-yuy6unuyba-uw.a.run.app/api/clients"
-  )
+  const response = await axios.get("http://localhost:3000/api/clients")
     const { data } = response
     return dispatch(parseClients(data))
   }
 
-  //Actualizar clientes
-  const editClients = data => ({
-    type: EDIT_CLIENT,
-    payload: data,
+//Actualizar clientes
+const editClients = data => ({
+  type: EDIT_CLIENT,
+  payload: data,
+})
+
+export const editClient = data => async dispatch => {
+  const response = await axios({
+    url: "http://localhost:3000/api/clients/",
+    method: "PUT",
+    headers,
+    data,
   })
-  
- /*  export const editClient = () = */
-  
-  
+  const { data } = response
+  alert(response.data.status)
+  return dispatch(editClients(data))
+}
   //Ingresar nuevos clientes
   const addNewClient = data => ({
     type: ADD_CLIENT,
@@ -37,7 +49,7 @@ const headers = {
 
 export const addClient = data => async dispatch => {
   const reqObj = {
-    url: "https://backend-yuy6unuyba-uw.a.run.app/api/clients",
+    url: "http://localhost:3000/api/clients",
     method: "POST",
     headers,
     data,
@@ -46,4 +58,21 @@ export const addClient = data => async dispatch => {
   alert(response.data.status)
   dispatch(addNewClient([]))
   return getClients
+}
+
+//Eliminar cliente 
+const deleteClients = data => ({
+  type: DELETE_CLIENT,
+  payload: data,
+})
+
+export const deleteClient = data => async dispatch => {
+  const response = await axios({
+    url: "http://localhost:3000/api/clients/",
+    method: "DELETE",
+    headers,
+    data,
+  })
+  const { data } = response
+  return dispatch(deleteClients(data))
 }

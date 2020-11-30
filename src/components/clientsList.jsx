@@ -1,10 +1,11 @@
 import React from "react"
 import Table from "react-bootstrap/Table"
+import { Link } from 'gatsby'
 
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
-const ClientsList = ({clients}) => {
+const ClientsList = ({ clients }) => {
 
   return (
     <div className="table-container">
@@ -28,34 +29,37 @@ const ClientsList = ({clients}) => {
           </tr>
         </thead>
         <tbody>
-          {clients?clients.map(clients => (
+          {clients ? clients.map(client => (
             <tr>
-              <td>{clients._id}</td>
-              <td>{clients.Nombre}</td>
-              <td>{clients.ApellidoPat}</td>
-              <td>{clients.ApellidoMat}</td>
-              <td>{clients.Curp}</td>
-              <td>{clients.Colonia}</td>
-              <td>{clients.Direccion}</td>
-              <td>{clients.Celular}</td>
-              <td>{clients.Telefono}</td>
-              <td>{clients.Correo}</td>
-              <td>${clients.Adeudo}.00</td>
-              <td>{clients.FechaInscripcion}</td>
-              <td>{clients.Tipo}</td> 
-            <td> 
-              <div className="btnClient-Container">
-                <Button variant="warning">Actualizar</Button>
-                <Button
-                /*  onClick={() => removeClient(client.id)}
-                    variant="danger" */
-                >
-                  Eliminar
+              <td>{client.UserId}</td>
+              <td>{client.Nombre}</td>
+              <td>{client.ApellidoPat}</td>
+              <td>{client.ApellidoMat}</td>
+              <td>{client.Curp}</td>
+              <td>{client.Colonia}</td>
+              <td>{client.Direccion}</td>
+              <td>{client.Celular}</td>
+              <td>{client.Telefono}</td>
+              <td>{client.Correo}</td>
+              <td>${client.Adeudo}.00</td>
+              <td>{client.FechaInscripcion}</td>
+              <td>{client.Tipo}</td>
+              <td>
+                <div className="btnClient-Container">
+                  <Link to='/addClient/' state={{ id: client._id }}>
+                    <Button variant="warning">Actualizar</Button>
+                  </Link>
+
+                  <Button
+                  /*  onClick={() => removeClient(client.id)}
+                      variant="danger" */
+                  >
+                    Eliminar
                 </Button>
-              </div>
-            </td>
-          </tr>
-          )):""}
+                </div>
+              </td>
+            </tr>
+          )) : ""}
         </tbody>
       </Table>
     </div>
