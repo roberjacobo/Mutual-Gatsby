@@ -40,11 +40,11 @@ const ClientView = ({
   addClient,
   editClient,
   //props data
-  location: { state: { id } },
+  location: { state },
   //redux prop
   clients
 }) => {
-  console.log('id props: ', id)
+  const id = state ? state.id : 0
   /* const client = status.clients.filter(client => client.id === id)[0] */
   
   const client = clients.filter(client => client._id === id)[0] || null
