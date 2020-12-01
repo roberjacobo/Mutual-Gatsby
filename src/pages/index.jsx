@@ -57,7 +57,7 @@ export default function Index() {
         <div className="imagenes"><img src={funerales16} alt="segunda foto caja" /></div>
         <div className="imagenes"><img src={funerales17} alt="tercera foto caja" />
               <div className="encima">
-                <h2>Cajas</h2>
+              <h2>Ataúdes</h2>
               </div>
         </div>
         <div className="imagenes"><img src={funerales18} alt="cuarta foto caja" /></div>

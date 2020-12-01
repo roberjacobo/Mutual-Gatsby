@@ -8,9 +8,7 @@ const Valores = () => {
           <div className="col-12 col-md-6">
             <h2>Misión</h2>
             <p>
-              Brindar a la comunidad un apoyo responsable, oportuno y calidez en
-              servicios funerarios de uso inmediato y de previsión, a través de
-              un equipo de trabajo humano, profesional e innovador.
+              Brindar apoyo con calidez humana a las familias que han perdido un ser querido, otorgando un servicio funerario de paz y tranquilidad en los momentos que más lo necesitan.
             </p>
           </div>
           <div className="col-12 col-md-6">
@@ -34,10 +32,7 @@ const Valores = () => {
           <div className="col-12 col-md-6">
             <h2>Visión</h2>
             <p>
-              Ser la empresa líder en Michoacán en servicios funerarios de uso
-              inmediato y a previsión, comprometidos en satisfacer con dignidad
-              y respeto las necesidades de nuestros clientes a través de la más
-              alta calidad y la mejora continua.
+              Ser la mejor empresa de servicios funerarios a nivel nacional, dando un trato respetuoso de calidad y digno a todos nuestros clientes.
             </p>
           </div>
         </div>

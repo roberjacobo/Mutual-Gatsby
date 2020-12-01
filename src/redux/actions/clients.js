@@ -72,9 +72,10 @@ export const deleteClient = _Id => async dispatch => {
     url: `http://localhost:3000/api/clients/${_Id}`,
     method: "DELETE",
     headers,
-    data: { data },
+    data: { datos },
   })
   console.log("arre: "  +  response)
-  const { data } = response
-  return dispatch(deleteClients(data))
+  const { datos } = response
+  alert(response.data.status)
+  return dispatch(deleteClients(datos))
 }
