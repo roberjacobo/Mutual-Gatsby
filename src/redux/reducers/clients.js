@@ -22,7 +22,7 @@ const clientsReducer = (state = initialState, action) => {
       }
       return newAddState
     case DELETE_CLIENT:
-      return { clients: action.payload }
+      return { ...state }
     case EDIT_CLIENT:
       return { clients: action.payload }
     default:

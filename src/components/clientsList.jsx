@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
-const ClientsList = ({ clients }) => {
+const ClientsList = ({ clients, deleteClient }) => {
 
   return (
     <div className="table-container">
@@ -49,10 +49,10 @@ const ClientsList = ({ clients }) => {
                   <Link to='/addClient/' state={{ id: client._id }}>
                     <Button variant="warning">Actualizar</Button>
                   </Link>
-
+                  
                   <Button
-                  /*  onClick={() => removeClient(client.id)}
-                      variant="danger" */
+                    onClick={() => deleteClient({ client: client.UserId })}
+                    variant="danger"
                   >
                     Eliminar
                 </Button>

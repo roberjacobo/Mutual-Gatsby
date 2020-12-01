@@ -6,8 +6,8 @@ import { bindActionCreators } from "redux"
 import  * as Actions from "../redux/actions/clients"
 import * as employeeActions from "../redux/actions/employee"
 
-import Header from "../components/header"
-import Footer from "../components/footer"
+/* import Header from "../components/header"
+import Footer from "../components/footer" */
 import ClientsList from "../components/clientsList"
 
 import RegistroPago from "../components/registroPago"
@@ -19,7 +19,7 @@ import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
-function Mutual({ clients, getClients, employees, logout, deleteClients }) {
+function Mutual({ clients, getClients, employees, logout, deleteClient }) {
 
   const [clientes, setClients] = useState([])
   useEffect(() => {
@@ -59,10 +59,13 @@ function Mutual({ clients, getClients, employees, logout, deleteClients }) {
           <h2>Registro de egresos</h2>
         <Egresos />
         </div>
-      <p>Buscar</p>
-      <div className=""><FormControl /></div>
+
+      <div className="buscar-clientes">
+        <p>Buscar: </p>
+        <FormControl />
+      </div>
       <div className="lista-container">
-          <ClientsList clients={clients} />
+        <ClientsList deleteClient={deleteClient} clients={clients} />
       </div>
     </>
   )

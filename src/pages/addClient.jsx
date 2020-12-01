@@ -49,7 +49,6 @@ const ClientView = ({
   
   const client = clients.filter(client => client._id === id)[0] || null
 
-
   //Inicializa el estado que se enviará con cadenas vacías
   const [values, setValues] = useState({
     Estado: true,

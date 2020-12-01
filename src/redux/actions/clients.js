@@ -49,7 +49,7 @@ const headers = {
 
 export const addClient = data => async dispatch => {
   const reqObj = {
-    url: "http://localhost:3000/api/clients",
+    url: "http://localhost:3000/api/clients/",
     method: "POST",
     headers,
     data,
@@ -67,6 +67,7 @@ const deleteClients = data => ({
 })
 
 export const deleteClient = data => async dispatch => {
+  console.log(data)
   const response = await axios({
     url: "http://localhost:3000/api/clients/",
     method: "DELETE",
