@@ -49,9 +49,9 @@ const ClientsList = ({ clients, deleteClient }) => {
                   <Link to='/addClient/' state={{ id: client._id }}>
                     <Button variant="warning">Actualizar</Button>
                   </Link>
-                  
+
                   <Button
-                    onClick={() => deleteClient({ client: client.UserId })}
+                    onClick={() => deleteClient(client._id)}
                     variant="danger"
                   >
                     Eliminar

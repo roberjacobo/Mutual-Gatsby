@@ -78,6 +78,15 @@
     margin-right: 5px;
     margin-bottom: 5px;
   }
+.buscar-clientes {
+  display: flex;
+  width: 50%;
+  flex-direction: end;
+  align-items: end;
+  justify-content: center;
+  margin-left: 10%;
+  margin-top: 5%;
+}
   .lista-container {
     margin-left: 25%;
     margin-right: 25%;

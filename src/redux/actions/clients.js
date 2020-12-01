@@ -66,14 +66,15 @@ const deleteClients = data => ({
   payload: data,
 })
 
-export const deleteClient = data => async dispatch => {
-  console.log(data)
+export const deleteClient = _Id => async dispatch => {
+  console.log(_Id)
   const response = await axios({
-    url: "http://localhost:3000/api/clients/",
+    url: `http://localhost:3000/api/clients/${_Id}`,
     method: "DELETE",
     headers,
-    data,
+    data: { data },
   })
+  console.log("arre: "  +  response)
   const { data } = response
   return dispatch(deleteClients(data))
 }
