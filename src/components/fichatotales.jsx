@@ -16,7 +16,7 @@ const fichatotales = ({clients}) => {
           <h4>Ingreso Neto</h4>
           <label>$ 5555</label>
           <h4>Total de Socios inscritos</h4>
-          <label>{clients.length}</label>
+          <label>{clients ? clients.length : "0"}</label>
           <h4>Socios por cobrar</h4>
           <label>5555</label>
           <h4>Ingreso Bruto</h4>

@@ -16,7 +16,7 @@ const headers = {
 
 export const login = loginData => async dispatch => {
   const loginObj = {
-    url: "http://localhost:3000/api/login",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/login",
     method: "POST",
     headers,
     data: loginData,

@@ -20,11 +20,12 @@ import Button from 'react-bootstrap/Button'
 import "../styles/mutual.css"
 
 function Mutual({ clients, getClients, employees, logout, deleteClient }) {
+  const [search, setSearch] = useState("")
 
   const [clientes, setClients] = useState([])
   useEffect(() => {
-    getClients()
-  }, [clientes]);
+    getClients(search)
+  }, [clientes, search]);
 
   useEffect(() => {
     const { ok } = employees
@@ -62,10 +63,10 @@ function Mutual({ clients, getClients, employees, logout, deleteClient }) {
 
       <div className="buscar-clientes">
         <p>Buscar: </p>
-        <FormControl />
+        <FormControl onChange={(e) => setSearch(e.target.value)} />
       </div>
       <div className="lista-container">
-        <ClientsList deleteClient={deleteClient} clients={clients} />
+        <ClientsList deleteClient={deleteClient} clients={clients} getClients={getClients} />
       </div>
     </>
   )

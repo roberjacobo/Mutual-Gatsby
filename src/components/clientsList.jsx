@@ -5,7 +5,12 @@ import { Link } from 'gatsby'
 import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
-const ClientsList = ({ clients, deleteClient }) => {
+const ClientsList = ({ clients, deleteClient, getClients }) => {
+
+  const handleDelete = async (_id) => {
+    await deleteClient(_id)
+    await getClients()
+  }
 
   return (
     <div className="table-container">
@@ -51,7 +56,7 @@ const ClientsList = ({ clients, deleteClient }) => {
                   </Link>
 
                   <Button
-                    onClick={() => deleteClient(client._id)}
+                    onClick={() => handleDelete(client._id)}
                     variant="danger"
                   >
                     Eliminar

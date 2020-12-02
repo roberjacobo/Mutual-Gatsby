@@ -14,11 +14,14 @@ const parseClients = data => ({
   payload: data,
 })
 
-export const getClients = () => async dispatch => {
-  const response = await axios.get("http://localhost:3000/api/clients")
-    const { data } = response
-    return dispatch(parseClients(data))
-  }
+export const getClients = str => async dispatch => {
+  const busqueda = str || ""
+  const response = await axios.get(
+    `https://backend-yuy6unuyba-uw.a.run.app/api/clients?q=${busqueda}`
+  )
+  const { data } = response
+  return dispatch(parseClients(data))
+}
 
 //Actualizar clientes
 const editClients = data => ({
@@ -28,7 +31,7 @@ const editClients = data => ({
 
 export const editClient = data => async dispatch => {
   const response = await axios({
-    url: "http://localhost:3000/api/clients/",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/clients/",
     method: "PUT",
     headers,
     data,
@@ -49,7 +52,7 @@ const headers = {
 
 export const addClient = data => async dispatch => {
   const reqObj = {
-    url: "http://localhost:3000/api/clients/",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/clients/",
     method: "POST",
     headers,
     data,
@@ -69,13 +72,13 @@ const deleteClients = data => ({
 export const deleteClient = _Id => async dispatch => {
   console.log(_Id)
   const response = await axios({
-    url: `http://localhost:3000/api/clients/${_Id}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/clients/${_Id}`,
     method: "DELETE",
     headers,
     data: { datos },
   })
-  console.log("arre: "  +  response)
   const { datos } = response
   alert(response.data.status)
+
   return dispatch(deleteClients(datos))
 }
