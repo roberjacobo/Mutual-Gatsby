@@ -10,18 +10,15 @@ const fichatotales = ({clients}) => {
         <div className="ficha">
           <h2>Totales</h2>
           <br />
-
-          <h4>Cantidad de Empleados</h4>
-          <label>5555</label>
-          <h4>Ingreso Neto</h4>
-          <label>$ 5555</label>
           <h4>Total de Socios inscritos</h4>
           <label>{clients ? clients.length : "0"}</label>
           <h4>Socios por cobrar</h4>
           <label>5555</label>
+          <h4>Ingreso Neto</h4>
+          <label>$ 5555</label>
           <h4>Ingreso Bruto</h4>
           <label>$ 5555</label>
-
+          <br />
           <div className="btn-container">
             <Button variant="dark">Mutual Máster</Button>
             <Button variant="dark">Mutual Máster (Empresarial)</Button>
