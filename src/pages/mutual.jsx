@@ -19,7 +19,15 @@ import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
-function Mutual({ clients, getClients, employees, logout, deleteClient }) {
+function Mutual({
+  clients,
+  getClients,
+  employees,
+  logout,
+  deleteClient,
+  getClientsAmount
+}) {
+
   const [search, setSearch] = useState("")
 
   const [clientes, setClients] = useState([])
@@ -50,7 +58,7 @@ function Mutual({ clients, getClients, employees, logout, deleteClient }) {
         </div>
       </div>
         <div className="egresos-container">
-        <Fichatotales clients={clients}/>
+        <Fichatotales clients={clients} getClientsAmount={getClientsAmount} />
         </div>
         <div className="registroPago-container">
           <h2>Registro de pagos hechos por los clientes</h2>

@@ -3,10 +3,12 @@ import {
   ADD_CLIENT,
   EDIT_CLIENT,
   DELETE_CLIENT,
+  READ_CLIENTS_TOTAL_AMOUNT,
 } from "../actionTypes"
 
 const initialState = {
   clients: [],
+  clientsTotalAmount: 0,
 }
 
 const clientsReducer = (state = initialState, action) => {
@@ -14,8 +16,15 @@ const clientsReducer = (state = initialState, action) => {
     case READ_ALL_CLIENTS:
       const newState = {
         clients: action.payload,
+        clientsTotalAmount: state.clientsTotalAmount,
       }
       return newState
+    case READ_CLIENTS_TOTAL_AMOUNT:
+      const newReadAmountState = {
+        clientsTotalAmount: action.payload,
+        clients: state.clients,
+      }
+      return newReadAmountState
     case ADD_CLIENT:
       const newAddState = {
         clients: action.payload,

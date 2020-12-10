@@ -3,6 +3,7 @@ import {
   ADD_CLIENT,
   EDIT_CLIENT,
   DELETE_CLIENT,
+  READ_CLIENTS_TOTAL_AMOUNT,
 } from "../actionTypes"
 
 import axios from "axios"
@@ -21,6 +22,20 @@ export const getClients = str => async dispatch => {
   )
   const { data } = response
   return dispatch(parseClients(data))
+}
+
+// Lectura de adeudo total de clientes (socios)
+const readClientsAmount = data => ({
+  type: READ_CLIENTS_TOTAL_AMOUNT,
+  payload: data,
+})
+
+export const getClientsAmount = () => async dispatch => {
+  const response = await axios.get(`http://localhost:3000/api/clients/clientsAmount`)
+  console.log('response: ' + response)
+  const { data } = response
+  console.log('data: ' + data)
+  return dispatch(readClientsAmount(data))
 }
 
 //Actualizar clientes
