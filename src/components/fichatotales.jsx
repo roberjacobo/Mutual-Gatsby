@@ -3,7 +3,7 @@ import "../styles/components/fichatotales.css"
 
 import Button from "react-bootstrap/Button"
 
-const fichatotales = ({ clients }) => {
+const fichatotales = ({ clients, clientsTotalAmount }) => {
   return (
     <div>
       <div className="ficha-container">
@@ -13,7 +13,7 @@ const fichatotales = ({ clients }) => {
           <h4>Total de Socios inscritos:</h4>
             <label>{clients ? clients.length : "0"}</label>
           <h4>Adeudo total de socios:</h4>
-          <label></label>
+          <label>${clientsTotalAmount}</label>
           <br />
           <div className="btn-container">
             <Button variant="dark">Mutual Máster</Button>

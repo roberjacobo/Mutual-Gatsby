@@ -31,10 +31,10 @@ const readClientsAmount = data => ({
 })
 
 export const getClientsAmount = () => async dispatch => {
-  const response = await axios.get(`http://localhost:3000/api/clients/clientsAmount`)
-  console.log('response: ' + response)
+  const response = await axios.get(
+    `http://localhost:3000/api/clients/clientsAmount`
+  )
   const { data } = response
-  console.log('data: ' + data)
   return dispatch(readClientsAmount(data))
 }
 

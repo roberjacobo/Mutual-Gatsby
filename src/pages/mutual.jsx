@@ -25,7 +25,8 @@ function Mutual({
   employees,
   logout,
   deleteClient,
-  getClientsAmount
+  getClientsAmount,
+  clientsTotalAmount
 }) {
 
   const [search, setSearch] = useState("")
@@ -33,6 +34,7 @@ function Mutual({
   const [clientes, setClients] = useState([])
   useEffect(() => {
     getClients(search)
+    getClientsAmount()
   }, [clientes, search]);
 
   useEffect(() => {
@@ -58,7 +60,7 @@ function Mutual({
         </div>
       </div>
         <div className="egresos-container">
-        <Fichatotales clients={clients} getClientsAmount={getClientsAmount} />
+        <Fichatotales clients={clients} clientsTotalAmount={clientsTotalAmount} />
         </div>
         <div className="registroPago-container">
           <h2>Registro de pagos hechos por los clientes</h2>
@@ -84,6 +86,7 @@ const mapStateToProps = (state) => {
   return {
     clients: state.clients.clients,
     employees: state.employees.employees,
+    clientsTotalAmount: state.clients.clientsTotalAmount,
   }
 }
 

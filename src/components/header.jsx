@@ -17,8 +17,9 @@ export default function Header({ app }) {
     <Container>
       <Navbar bg="transparent" expand="lg">
         <Navbar.Brand href="#"><Link to="/"><img src={Logo} alt="Logotipo" /></Link></Navbar.Brand>
-        <Navbar.Collapse id="basic-navbar-nav" style={ app ? { display: 'block!important' } : {} }>
-          {!app ? <Nav className="mr-auto">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
             <Nav.Link>
               <Link to="/">INICIO</Link>
             </Nav.Link>
@@ -34,7 +35,7 @@ export default function Header({ app }) {
             <Nav.Link>
               <Link to="#action/3.1">CONTACTO</Link>
             </Nav.Link>
-          </Nav> : ''}
+          </Nav>
           <div className="nav-right">
             <Link className="a-btn" to="/loginPage">MUTUAL</Link>
           </div>
