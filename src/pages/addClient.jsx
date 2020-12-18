@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react"
 import "../styles/addClient.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "gatsby"
+/* import { Link } from "gatsby" */
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import * as Actions from "../redux/actions/clients"
+import * as clientsActions from "../redux/actions/clients"
 
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -13,7 +13,6 @@ import Footer from "../components/footer"
 import * as yup from "yup"
 import { Formik } from "formik"
 
-/* import { Link } from "gatsby" */
 
 import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
@@ -377,9 +376,9 @@ const ClientView = ({
 )
 }
 const mapStateToProps = (state) => {
-return {
-clients: state.clients.clients
+  return {
+    clients: state.clients.clients
+  }
 }
-}
-const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators(clientsActions, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(ClientView)

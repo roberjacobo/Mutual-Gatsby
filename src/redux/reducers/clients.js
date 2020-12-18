@@ -4,6 +4,7 @@ import {
   EDIT_CLIENT,
   DELETE_CLIENT,
   READ_CLIENTS_TOTAL_AMOUNT,
+  EDIT_CLIENT_AMOUNT,
 } from "../actionTypes"
 
 const initialState = {
@@ -33,6 +34,8 @@ const clientsReducer = (state = initialState, action) => {
     case DELETE_CLIENT:
       return { ...state }
     case EDIT_CLIENT:
+      return { clients: action.payload }
+    case EDIT_CLIENT_AMOUNT:
       return { clients: action.payload }
     default:
       return state

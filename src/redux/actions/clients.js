@@ -4,6 +4,7 @@ import {
   EDIT_CLIENT,
   DELETE_CLIENT,
   READ_CLIENTS_TOTAL_AMOUNT,
+  EDIT_CLIENT_AMOUNT,
 } from "../actionTypes"
 
 import axios from "axios"
@@ -55,7 +56,26 @@ export const editClient = data => async dispatch => {
   alert(response.data.status)
   return dispatch(editClients(data))
 }
-  //Ingresar nuevos clientes
+
+//Actualizar el monto de un cliente específico
+const editClientAmount = data => ({
+  type: EDIT_CLIENT_AMOUNT,
+  payload: data,
+})
+
+export const editClientsAmount = data => async dispatch => {
+  const response = await axios({
+    url: "http://localhost:3000/api/clients/:id",
+    method: "PUT",
+    headers,
+    data,
+  })
+  const { data } = response
+  alert(response.data.status)
+  return dispatch(editClientAmount(data))
+}
+
+//Ingresar nuevos clientes
   const addNewClient = data => ({
     type: ADD_CLIENT,
     payload: data,

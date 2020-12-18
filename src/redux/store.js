@@ -4,10 +4,12 @@ import storage from "redux-persist/lib/storage"
 import thunk from "redux-thunk"
 import clients from "./reducers/clients"
 import employees from "./reducers/employee"
+import charges from "./reducers/charges"
 
 const rootReducer = combineReducers({
   clients: clients,
   employees: employees,
+  charges: charges,
 })
 
 const persistConfig = {

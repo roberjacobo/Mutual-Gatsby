@@ -3,8 +3,9 @@ import { Link, navigate } from "gatsby"
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import  * as Actions from "../redux/actions/clients"
-import * as employeeActions from "../redux/actions/employee"
+import * as clientsActions from "../redux/actions/clients"
+import * as employeesActions from "../redux/actions/employee"
+import * as chargesActions from "../redux/actions/charges"
 
 /* import Header from "../components/header"
 import Footer from "../components/footer" */
@@ -26,11 +27,10 @@ function Mutual({
   logout,
   deleteClient,
   getClientsAmount,
-  clientsTotalAmount
+  clientsTotalAmount,
 }) {
 
   const [search, setSearch] = useState("")
-
   const [clientes, setClients] = useState([])
   useEffect(() => {
     getClients(search)
@@ -62,14 +62,18 @@ function Mutual({
         <div className="egresos-container">
         <Fichatotales clients={clients} clientsTotalAmount={clientsTotalAmount} />
         </div>
+
+
         <div className="registroPago-container">
-          <h2>Registro de pagos hechos por los clientes</h2>
+        <h2>Registro de pagos hechos por los socios</h2>
         <RegistroPago />
         </div>
-        <div className="egresos-container">
+
+
+      {/*     <div className="egresos-container">
           <h2>Registro de egresos</h2>
         <Egresos />
-        </div>
+        </div> */}
 
       <div className="buscar-clientes">
         <p>Buscar: </p>
@@ -85,11 +89,11 @@ function Mutual({
 const mapStateToProps = (state) => {
   return {
     clients: state.clients.clients,
-    employees: state.employees.employees,
     clientsTotalAmount: state.clients.clientsTotalAmount,
+    employees: state.employees.employees
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ ...Actions, ...employeeActions }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ ...clientsActions, ...employeesActions }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mutual)
