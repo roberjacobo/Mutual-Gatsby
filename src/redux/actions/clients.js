@@ -71,7 +71,7 @@ export const editClientsAmount = data => async dispatch => {
     data,
   })
   const { data } = response
-  alert(response.data.status)
+  console.log(data)
   return dispatch(editClientAmount(data))
 }
 
