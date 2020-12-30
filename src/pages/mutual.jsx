@@ -66,11 +66,11 @@ function Mutual({
 
         <div className="registroPago-container">
         <h2>Registro de pagos hechos por los socios</h2>
-        <RegistroPago />
+        <RegistroPago clients={clients} />
         </div>
 
 
-      {/*     <div className="egresos-container">
+      {/*<div className="egresos-container">
           <h2>Registro de egresos</h2>
         <Egresos />
         </div> */}

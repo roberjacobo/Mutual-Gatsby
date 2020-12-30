@@ -25,7 +25,7 @@ const schema = yup.object({
 const ChargeView = ({
   //actions
   addCharge,
-  editClient
+  editClientsAmount,
 }) => {
   const charge = 0;
   // const charge = charges.filter(charge => charge._id === id)[0] || null
@@ -56,7 +56,9 @@ const ChargeView = ({
 
   const sendData = (event) => {
     event.preventDefault()
+    console.log(chargeValues)
     addCharge(chargeValues)
+    editClientsAmount(chargeValues)
   }
 
   return (
@@ -228,9 +230,10 @@ const ChargeView = ({
 const mapStateToProps = (state) => {
   return {
     charges: state.charges.charges,
-    clients: state.clients.clients
+    clients: state.clients.clients,
+    editClientsAmount: state.clients.editClientsAmount
   }
 }
-const mapDispatchToProps = dispatch => bindActionCreators(chargesActions, clientsActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ ...chargesActions, ...clientsActions }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(ChargeView)
 
