@@ -33,7 +33,7 @@ const schema = yup.object({
   Tipo: yup.string().required(),
   Terms: yup.bool().required(),
 })
-
+//hola
 const ClientView = ({
   //actions
   addClient,

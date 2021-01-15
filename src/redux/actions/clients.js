@@ -63,7 +63,8 @@ const editClientAmount = data => ({
   payload: data,
 })
 
-export const editClientsAmount = UserId => async dispatch => {
+export const editClientsAmount = data => async dispatch => {
+  const UserId = ""
   const response = await axios({
     url: `http://localhost:3000/api/clients/editClientAmount/${UserId}`,
     method: "PUT",

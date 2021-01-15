@@ -15,7 +15,7 @@ const Historial = ({
   charges,
   getCharges,
   deleteCharge,
-  editCharge
+/* editCharge */
 }) => {
 
   const [pagos, setPagos] = useState([])
@@ -57,7 +57,7 @@ const Historial = ({
               <th>Empleado</th>
               <th>Fecha</th>
               <th>Nota</th>
-              <th>Acciones</th>
+              {/*  <th>Acciones</th> */}
             </tr>
           </thead>
           <tbody>
@@ -65,11 +65,11 @@ const Historial = ({
               <tr>
                 <td>{charge.IdCobroUsuario}</td>
                 <td>{charge.Monto}</td>
-                <td>{charge.IdCliente}</td>
+                <td>{charge.UserId}</td>
                 <td>{charge.IdEmpleado}</td>
                 <td>{charge.Fecha}</td>
                 <td>{charge.Nota}</td>
-                <td>
+                {/*                 <td>
                   <div className="btnCharge-Container">
                     <Link to='/Mutual/' state={{ id: charge._id }}>
                       <Button variant="warning">Actualizar</Button>
@@ -82,7 +82,7 @@ const Historial = ({
                       Eliminar
                 </Button>
                   </div>
-                </td>
+                </td> */}
             </tr>
             )) : ""}
           </tbody>

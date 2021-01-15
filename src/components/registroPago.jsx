@@ -16,6 +16,7 @@ import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 
 const schema = yup.object({
+  IdCobroUsuario: yup.string().required(),
   Monto: yup.string().required(),
   IdCliente: yup.string().required(),
   IdEmpleado: yup.string().required(),
@@ -26,8 +27,12 @@ const ChargeView = ({
   //actions
   addCharge,
   editClientsAmount,
+  clients
 }) => {
   const charge = 0;
+
+  const clientes = { ...clients }
+
   // const charge = charges.filter(charge => charge._id === id)[0] || null
 
   /*   const [cobros, setCobros] = useState([])
@@ -38,11 +43,12 @@ const ChargeView = ({
   //inicializa el estado que se enviará con cadenas vacías
   const [chargeValues, setChargeValues] = useState({
     Estado: true,
-    Monto: charge ? charge.Monto : '',
-    IdCliente: charge ? charge.IdCliente : '',
-    IdEmpleado: charge ? charge.IdEmpleado : '',
+    IdCobroUsuario: charge ? charge.IdCobroUsuario : '000001',
+    Monto: charge ? charge.Monto : '2',
+    UserId: charge ? charge.UserId : '0000',
+    IdEmpleado: charge ? charge.IdEmpleado : '0123',
     Fecha: charge ? charge.Fecha : '',
-    Nota: charge ? charge.Nota : '',
+    Nota: charge ? charge.Nota : 'bla bla bla',
   })
 
   //Función que vigila el cambio de estado del formulario
@@ -56,10 +62,17 @@ const ChargeView = ({
 
   const sendData = (event) => {
     event.preventDefault()
-    console.log(chargeValues)
     addCharge(chargeValues)
+    console.log(chargeValues)
+    console.log(chargeValues.Monto)
+    console.log('id: ' + clientes.UserId)
+    console.log('Khe: ' + typeof clientes)
     editClientsAmount(chargeValues)
   }
+
+/*  const montoAdeudo = clientes.filter(client => clientes.id === idDeRoberto)[0] || null;
+    const {adeudo} = montoAdeudo
+*/
 
   return (
     <>
@@ -71,7 +84,7 @@ const ChargeView = ({
             initialValues={{
               Estado: true,
               Monto: '',
-              IdCliente: '',
+              UserId: '',
               IdEmpleado: '',
               Fecha: '',
             }}
@@ -124,15 +137,15 @@ const ChargeView = ({
                     <Form.Control
                       type="Number"
                       placeholder="Id Cliente"
-                      name="IdCliente"
-                      value={chargeValues.IdCliente}
+                      name="UserId"
+                      value={chargeValues.UserId}
                       onChange={handleChange}
-                      isValid={touched.IdCliente && !errors.IdCliente}
-                      isInvalid={!!errors.IdCliente}
+                      isValid={touched.UserId && !errors.UserId}
+                      isInvalid={!!errors.UserId}
                     />
                     <Form.Control.Feedback>Se ve bien</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
-                      {errors.IdCliente}
+                      {errors.UserId}
                     </Form.Control.Feedback>
                   </Form.Group>
 
