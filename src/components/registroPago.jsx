@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react"
 import "../styles/components/registroPago.css"
-import { Link } from "gatsby"
+/* import { Link } from "gatsby" */
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
@@ -63,16 +63,23 @@ const ChargeView = ({
   const sendData = (event) => {
     event.preventDefault()
     addCharge(chargeValues)
+
     console.log(chargeValues)
-    console.log(chargeValues.Monto)
+    console.log(chargeValues.Monto) 
     console.log('id: ' + clientes.UserId)
     console.log('Khe: ' + typeof clientes)
-    editClientsAmount(chargeValues)
-  }
 
-/*  const montoAdeudo = clientes.filter(client => clientes.id === idDeRoberto)[0] || null;
+    console.log('id: ' + chargeValues.UserId)
+    
+    const montoAdeudo = clientes.filter(client => chargeValues.UserId === clientes.UserId)[0] || null
     const {adeudo} = montoAdeudo
-*/
+
+    
+
+    /* editClientsAmount(chargeValues) */
+  }
+/*     const montoAdeudo = clientes.filter(client => clientes.id === idDeRoberto)[0] || null;
+    const {adeudo} = montoAdeudo */
 
   return (
     <>
