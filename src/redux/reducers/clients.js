@@ -33,10 +33,6 @@ const clientsReducer = (state = initialState, action) => {
       return newAddState
     case DELETE_CLIENT:
       return { ...state }
-    case EDIT_CLIENT:
-      return { clients: action.payload }
-    case EDIT_CLIENT_AMOUNT:
-      return { clients: action.payload }
     default:
       return state
   }

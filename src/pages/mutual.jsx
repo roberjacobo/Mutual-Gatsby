@@ -66,7 +66,7 @@ function Mutual({
 
         <div className="registroPago-container">
         <h2>Registro de pagos hechos por los socios</h2>
-        <RegistroPago clients={clients} />
+        <RegistroPago clients={clients} getClients={getClients} search={search} />
         </div>
 
 

@@ -33,17 +33,19 @@ const schema = yup.object({
   Tipo: yup.string().required(),
   Terms: yup.bool().required(),
 })
-//hola
+
 const ClientView = ({
   //actions
   addClient,
   editClient,
+  getClients,
   //props data
   location: { state },
   //redux prop
   clients
 }) => {
   const id = state ? state.id : 0
+
   /* const client = status.clients.filter(client => client.id === id)[0] */
   
   const client = clients.filter(client => client._id === id)[0] || null
@@ -75,12 +77,18 @@ const ClientView = ({
       [event.target.name]: event.target.value,
     })
   }
-
-  const sendData = (event) => {
+  
+  const sendData = async (event) => {
     event.preventDefault()
-    addClient(values)
+    if(id) {
+      await editClient(values)
+    } else {
+      await addClient(values)
+    }
+    await getClients()
+    window.history.back();
     // call actions -
-  }
+  } 
 
   return (
     <>

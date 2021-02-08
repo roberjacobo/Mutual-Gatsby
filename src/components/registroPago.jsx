@@ -27,11 +27,11 @@ const ChargeView = ({
   //actions
   addCharge,
   editClientsAmount,
-  clients
+  clients,
+  getClients,
+  search,
 }) => {
   const charge = 0;
-
-  const clientes = { ...clients }
 
   // const charge = charges.filter(charge => charge._id === id)[0] || null
 
@@ -43,12 +43,12 @@ const ChargeView = ({
   //inicializa el estado que se enviará con cadenas vacías
   const [chargeValues, setChargeValues] = useState({
     Estado: true,
-    IdCobroUsuario: charge ? charge.IdCobroUsuario : '000001',
-    Monto: charge ? charge.Monto : '2',
-    UserId: charge ? charge.UserId : '0000',
-    IdEmpleado: charge ? charge.IdEmpleado : '0123',
+    IdCobroUsuario: charge ? charge.IdCobroUsuario : '',
+    Monto: charge ? charge.Monto : '',
+    UserId: charge ? charge.UserId : '',
+    IdEmpleado: charge ? charge.IdEmpleado : '',
     Fecha: charge ? charge.Fecha : '',
-    Nota: charge ? charge.Nota : 'bla bla bla',
+    Nota: charge ? charge.Nota : '',
   })
 
   //Función que vigila el cambio de estado del formulario
@@ -60,26 +60,15 @@ const ChargeView = ({
     })
   }
 
-  const sendData = (event) => {
+  const sendData = async (event) => {
     event.preventDefault()
     addCharge(chargeValues)
-
-    console.log(chargeValues)
-    console.log(chargeValues.Monto) 
-    console.log('id: ' + clientes.UserId)
-    console.log('Khe: ' + typeof clientes)
-
-    console.log('id: ' + chargeValues.UserId)
     
-    const montoAdeudo = clientes.filter(client => chargeValues.UserId === clientes.UserId)[0] || null
-    const {adeudo} = montoAdeudo
-
-    
-
-    /* editClientsAmount(chargeValues) */
+    const foundClient = clients.find(element => element.UserId === chargeValues.UserId)
+    foundClient.Adeudo = foundClient.Adeudo - Number(chargeValues.Monto)
+    await editClientsAmount(foundClient)
+    await getClients(search);
   }
-/*     const montoAdeudo = clientes.filter(client => clientes.id === idDeRoberto)[0] || null;
-    const {adeudo} = montoAdeudo */
 
   return (
     <>

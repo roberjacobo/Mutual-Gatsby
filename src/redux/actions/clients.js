@@ -45,16 +45,17 @@ const editClients = data => ({
   payload: data,
 })
 
-export const editClient = data => async dispatch => {
+export const editClient = dato => async dispatch => {
+  const UserId = dato.UserId
   const response = await axios({
-    url: "http://localhost:3000/api/clients/",
+    url: `http://localhost:3000/api/clients/${UserId}`,
     method: "PUT",
     headers,
-    data,
+    data: dato,
   })
   const { data } = response
   alert(response.data.status)
-  return dispatch(editClients(data))
+  // return dispatch(editClients(data))
 }
 
 //Actualizar el monto de un cliente específico
@@ -63,16 +64,16 @@ const editClientAmount = data => ({
   payload: data,
 })
 
-export const editClientsAmount = data => async dispatch => {
-  const UserId = ""
+export const editClientsAmount = datos => async dispatch => {
+  const UserId = datos.UserId
   const response = await axios({
     url: `http://localhost:3000/api/clients/editClientAmount/${UserId}`,
     method: "PUT",
     headers,
-    data,
+    data: datos,
   })
   const { data } = response
-  return dispatch(editClientAmount(data))
+  //return dispatch(editClientAmount(data))
 }
 
 //Ingresar nuevos clientes
