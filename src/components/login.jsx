@@ -4,7 +4,7 @@ import { Link, navigate } from "gatsby"
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import * as Actions from "../redux/actions/employee"
+import * as loginActions from "../redux/actions/login"
 
 import user from "../images/user.png"
 
@@ -22,7 +22,7 @@ const schema = yup.object({
   Contrasenia: yup.string().required(),
 })
 
-const Login = ({ login, employees }) => {
+const Login = ({ login, logged  }) => {
   //Inicializa el estado que se enviará con cadenas vacías
   const [values, setValues] = useState({
     Correo: '',
@@ -30,12 +30,17 @@ const Login = ({ login, employees }) => {
   })
 
   useEffect(() => {
-    const { ok } = employees
-    console.log(employees)
-    if (ok) {
-      navigate('/mutual')
+    switch (logged.rol) {
+      case "ADMIN_ROLE":
+        navigate('/mutual');
+        break;
+      case "EMPLOYEE_ROLE":
+        navigate('/panelEmpleado');
+        break;
+      default:
+        break;
     }
-  }, [employees]);
+  }, [logged]);
 
 
   //Función que vigila el cambio de estado del formulario
@@ -60,7 +65,7 @@ const Login = ({ login, employees }) => {
           <div>
             <img className="img-User" src={user} alt="user" />
           </div>
-          <>
+          <div>
             <Formik
               validationSchema={schema}
               onSubmit={sendData}
@@ -75,7 +80,9 @@ const Login = ({ login, employees }) => {
                 isValid,
                 errors,
               }) => (
+                <div className="input-container">
                   <Form noValidate onSubmit={sendData}>
+                    <div className="correo-container">
                     <InputGroup className="cl-2">
                       <InputGroup.Prepend>
                         <InputGroup.Text>Correo</InputGroup.Text>
@@ -87,7 +94,9 @@ const Login = ({ login, employees }) => {
                         onChange={handleChange}
                       />
                     </InputGroup>
+                    </div>
                     <br />
+                    <div className="contrasenia-container">
                     <InputGroup className="cl-2">
                       <InputGroup.Prepend>
                         <InputGroup.Text>Contraseña</InputGroup.Text>
@@ -99,9 +108,10 @@ const Login = ({ login, employees }) => {
                         onChange={handleChange}
                       />
                     </InputGroup>
+                    </div>
                     <br />
 
-                    <div className="button-container">
+                    <div>
                       <Button
                         type="submit"
                         variant="success"
@@ -116,9 +126,10 @@ const Login = ({ login, employees }) => {
                       </Link>
                     </div>
                   </Form>
+                </div>
                 )}
             </Formik>
-          </>
+          </div>
         </div>
       </div>
     </>
@@ -127,10 +138,10 @@ const Login = ({ login, employees }) => {
 
 const mapStateToProps = state => {
   return {
-    employees: state.employees.employees,
+    logged: state.login.login,
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ ...loginActions }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

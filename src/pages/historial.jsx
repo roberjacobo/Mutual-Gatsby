@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { Link } from 'gatsby'
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
@@ -9,7 +8,6 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 
 import Table from "react-bootstrap/Table"
-import Button from "react-bootstrap/Button"
 
 const Historial = ({
   charges,

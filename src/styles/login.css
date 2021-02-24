@@ -29,11 +29,10 @@
 .button-container {
   display: flex;
   justify-content: space-around;
-  margin-top: 25px;
 }
 
 .btnVerde {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .btnRojo {

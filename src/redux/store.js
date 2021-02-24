@@ -5,8 +5,10 @@ import thunk from "redux-thunk"
 import clients from "./reducers/clients"
 import employees from "./reducers/employee"
 import charges from "./reducers/charges"
+import login from "./reducers/login"
 
 const rootReducer = combineReducers({
+  login: login,
   clients: clients,
   employees: employees,
   charges: charges,

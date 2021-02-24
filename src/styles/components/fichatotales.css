@@ -40,11 +40,11 @@ h2 {
   }
 
   .ficha {
-    width: 100%;
+    width: 80%;
     background-color: #f4f4f4;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 4px 0px;
     padding: 5px;
-    margin-top: 5px;
+    margin-top: 5%;
     margin-bottom: 20px;
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;

@@ -2,15 +2,13 @@ import React from "react"
 import { Link } from 'gatsby'
 
 import 'bootstrap/dist/css/bootstrap.css'
-
-import "../styles/components/clientsList.css"
 import Button from "react-bootstrap/Button"
 
-const ClientsList = ({ clients, deleteClient, getClients }) => {
+const EmployeesList = ({ employees, deleteEmployee, getEmployees }) => {
 
   const handleDelete = async (_id) => {
-    await deleteClient(_id)
-    await getClients()
+    await deleteEmployee(_id)
+    await getEmployees()
   }
 
   return (
@@ -28,36 +26,36 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
             <th>Celular</th>
             <th>Teléfono</th>
             <th>Correo</th>
-            <th>Adeudo</th>
-            <th>Fecha de inscripción</th>
-            <th>Tipo</th>
+            <th>Contraseña</th>
+            <th>Salario</th>
+            <th>Fecha Ingreso</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {clients ? clients.map(client => (
+          {employees ? employees.map(employee => (
             <tr>
-              <td>{client.UserId}</td>
-              <td>{client.Nombre}</td>
-              <td>{client.ApellidoPat}</td>
-              <td>{client.ApellidoMat}</td>
-              <td>{client.Curp}</td>
-              <td>{client.Colonia}</td>
-              <td>{client.Direccion}</td>
-              <td>{client.Celular}</td>
-              <td>{client.Telefono}</td>
-              <td>{client.Correo}</td>
-              <td>${client.Adeudo}.00</td>
-              <td>{client.FechaInscripcion}</td>
-              <td>{client.Tipo}</td>
+              <td>{employee.EmployeeId}</td>
+              <td>{employee.Nombre}</td>
+              <td>{employee.ApellidoPat}</td>
+              <td>{employee.ApellidoMat}</td>
+              <td>{employee.Curp}</td>
+              <td>{employee.Colonia}</td>
+              <td>{employee.Direccion}</td>
+              <td>{employee.Celular}</td>
+              <td>{employee.Telefono}</td>
+              <td>{employee.Correo}</td>
+              <td>{employee.Contrasenia}</td>
+              <td>${employee.Salario}.00</td>
+              <td>{employee.fechaIngreso}</td>
               <td>
-                <div className="btnClient-Container">
-                  <Link to='/addClient/' state={{ id: client._id }}>
+                <div className="btnEmployee-Container">
+                  <Link to='/editEmployee/' state={{ id: employee._id }}>
                     <Button variant="warning">Actualizar</Button>
                   </Link>
 
                   <Button
-                    onClick={() => handleDelete(client._id)}
+                    onClick={() => handleDelete(employee._id)}
                     variant="danger"
                   >
                     Eliminar
@@ -72,4 +70,4 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
   )
 }
 
-export default ClientsList
+export default EmployeesList

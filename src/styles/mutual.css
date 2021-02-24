@@ -60,7 +60,25 @@
   margin-top: 5%;
 }
 
+@media only screen and (max-width: 1320px) {
+  .lista-container {
+    margin-left: 5px;
+    margin-right: 5%;
+  }
+}
+
 @media only screen and (max-width: 800px) {
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .logOut {
+    display: flex;
+    flex-direction: column;
+  }
+
   .formulario-container {
     margin-left: 5px;
     margin-right: 5px;

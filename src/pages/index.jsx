@@ -17,8 +17,6 @@ import funerales18 from "../images/funerales(19).jpeg"
 import funerales19 from "../images/funerales(2).jpeg"
 
 import video from "../assets/cover1.mp4"
-import Logo from "../images/Logo.png"
-
 
 export default function Index() {
   return (

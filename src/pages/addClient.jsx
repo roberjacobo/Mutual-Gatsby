@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react"
-import "../styles/addClient.css"
+import "../styles/mutual.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 /* import { Link } from "gatsby" */
 
@@ -20,6 +20,7 @@ import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 
 const schema = yup.object({
+  UserId: yup.string().required(),
   Nombre: yup.string().required(),
   ApellidoPat: yup.string().required(),
   ApellidoMat: yup.string().required(),
@@ -46,8 +47,6 @@ const ClientView = ({
 }) => {
   const id = state ? state.id : 0
 
-  /* const client = status.clients.filter(client => client.id === id)[0] */
-  
   const client = clients.filter(client => client._id === id)[0] || null
 
   //Inicializa el estado que se enviará con cadenas vacías
@@ -88,7 +87,7 @@ const ClientView = ({
     await getClients()
     window.history.back();
     // call actions -
-  } 
+  }
 
   return (
     <>

@@ -1,3 +1,7 @@
+//Login
+export const LOGIN = "LOGIN"
+export const LOGOUT = "LOGOUT"
+
 // Clients
 export const READ_ALL_CLIENTS = "READ_ALL_CLIENTS"
 export const READ_CLIENTS_TOTAL_AMOUNT = "READ_CLIENTS_TOTAL_AMOUNT"
@@ -7,8 +11,11 @@ export const DELETE_CLIENT = "DELETE_CLIENT"
 export const EDIT_CLIENT_AMOUNT = "EDIT_CLIENT_AMOUNT"
 
 //Employees
-export const LOGIN = "LOGIN"
-export const LOGOUT = "LOGOUT"
+export const READ_ALL_EMPLOYEES = "READ_ALL_EMPLOYEES"
+export const ADD_EMPLOYEE = "ADD_EMPLOYEE"
+export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE"
+export const EDIT_EMPLOYEE = "EDIT_EMPLOYEE"
+
 
 //Payments
 export const READ_ALL_CHARGES = "READ_ALL_CHARGES"

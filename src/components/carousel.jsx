@@ -27,7 +27,7 @@ const Carousel = () => {
 
             <div className="slide">
               <figure className="slide-figure">
-                <img className="slide-img" src={funerales15} />
+                <img className="slide-img" src={funerales15} alt="..." />
                 <figcaption className="slide-caption">
                   <p>1</p>
                 </figcaption>
@@ -40,7 +40,7 @@ const Carousel = () => {
 
             <div className="slide">
               <figure className="slide-figure">
-                <img className="slide-img" src={funerales17} />
+                <img className="slide-img" src={funerales17} alt="..." />
                 <figcaption className="slide-caption">
                   <p>2</p>
                 </figcaption>
@@ -53,7 +53,7 @@ const Carousel = () => {
 
             <div class="slide">
               <figure className="slide-figure">
-                <img className="slide-img" src={funerales16} />
+                <img className="slide-img" src={funerales16} alt="..." />
                 <figcaption className="slide-caption">
                   <p>3</p>
                 </figcaption>
