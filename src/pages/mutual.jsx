@@ -11,7 +11,6 @@ import RegistroPago from "../components/registroPago"
 import Fichatotales from "../components/fichatotales"
 
 import FormControl from "react-bootstrap/FormControl"
-import Button from 'react-bootstrap/Button'
 
 import "../styles/mutual.css"
 
@@ -24,6 +23,7 @@ function Mutual({
   deleteClient,
   getClientsAmount,
   clientsTotalAmount,
+  postChargeToClients
 }) {
   const [search, setSearch] = useState("")
   const [clientes, setClients] = useState([])
@@ -48,22 +48,22 @@ function Mutual({
     <>
       <div className="btn-form-container">
         <div className="btn-container">
-          <Link to="/addClient/"><Button variant="outline-primary">Suscribir Cliente</Button></Link>
-          <Link to="/addEmployee/"><Button variant="outline-primary">Nuevo Empleado</Button></Link>
-          <Button variant="outline-primary">Registrar Pago</Button>
-          <Button variant="outline-primary">Registrar Egreso</Button>
-          <Button variant="outline-warning"><Link to="/historial/">Historial de Pagos</Link></Button>
+          <Link to="/addClient/"><button className="button">Suscribir Cliente</button></Link>
+          <Link to="/addEmployee/"><button className="button">Nuevo Empleado</button></Link>
+          <a href="#pagos"><button className="button">Registrar Pago</button></a>
+          <button className="button">Registrar Egreso</button>
+          <Link to="/historial/"><button className="button">Historial de Pagos</button></Link>
         </div>
-        <div className="logOut"><Button onClick={logout} variant="outline-danger">Salir de la Mutual</Button></div>
+        <div className="logOut"><button onClick={logout} className="buttonLogOut">Salir de la Mutual</button></div>
         <div className="form-container">
         </div>
       </div>
         <div className="egresos-container">
-        <Fichatotales clients={clients} clientsTotalAmount={clientsTotalAmount} />
+        <Fichatotales clients={clients} clientsTotalAmount={clientsTotalAmount} postChargeToClients={postChargeToClients} />
         </div>
 
 
-        <div className="registroPago-container">
+        <div className="registroPago-container" id="pagos">
         <h2>Registro de pagos hechos por los socios</h2>
         <RegistroPago clients={clients} getClients={getClients} search={search} />
         </div>
@@ -77,6 +77,7 @@ function Mutual({
       <div className="buscar-clientes">
         <p>Buscar clientes: </p>
         <FormControl onChange={(e) => setSearch(e.target.value)} />
+        filtro: ID, Apellido paterno y ruta
       </div>
       <div className="lista-container">
         <ClientsList deleteClient={deleteClient} clients={clients} getClients={getClients} />

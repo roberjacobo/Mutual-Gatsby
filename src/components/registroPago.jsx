@@ -10,7 +10,7 @@ import * as clientsActions from "../redux/actions/clients"
 import * as yup from "yup"
 import { Formik } from "formik"
 
-import Button from "react-bootstrap/Button"
+
 import InputGroup from "react-bootstrap/InputGroup"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
@@ -63,7 +63,6 @@ const ChargeView = ({
   const sendData = async (event) => {
     event.preventDefault()
     addCharge(chargeValues)
-    
     const foundClient = clients.find(element => element.UserId === chargeValues.UserId)
     foundClient.Adeudo = foundClient.Adeudo - Number(chargeValues.Monto)
     await editClientsAmount(foundClient)
@@ -73,7 +72,7 @@ const ChargeView = ({
   return (
     <>
       <Fragment>
-      <div>
+        <div>
           <Formik
             validationSchema={schema}
             onSubmit={sendData}
@@ -168,7 +167,7 @@ const ChargeView = ({
                       <Form.Control.Feedback type="invalid">
                         {errors.IdEmpleado}
                       </Form.Control.Feedback>
-                  </InputGroup>
+                    </InputGroup>
                   </Form.Group>
                 </Form.Row>
 
@@ -226,12 +225,12 @@ const ChargeView = ({
                   />
                 </Form.Group>
 
-                <Button className="btn-AceptarPago" type="submit">Aceptar</Button>
+                <button className="button" type="submit">Aceptar</button>
                 {/* <Button className="btn-EditarPago" type="">Editar</Button> */}
               </Form>
             )}
           </Formik>
-      </div>
+        </div>
       </Fragment>
     </>
   )

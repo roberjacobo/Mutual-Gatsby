@@ -26,6 +26,7 @@ export const login = loginData => async dispatch => {
     data: loginData,
   }
   const response = await axios(loginObj)
+  console.log(response)
   const { data } = response
   dispatch(loginIn(data))
   return response

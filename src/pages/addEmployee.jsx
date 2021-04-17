@@ -15,7 +15,6 @@ import EmployeesList from "../components/employeeList"
 import * as yup from "yup"
 import { Formik } from "formik"
 
-import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
@@ -270,7 +269,7 @@ const EmployeeView = ({
                 </Form.Row>
 
                 <Form.Row>
-                  <Form.Group as={Col} md="6" controlId="validationFormik07">
+                  <Form.Group as={Col} md="3" controlId="validationFormik07">
                     <Form.Label>Colonia</Form.Label>
                     <Form.Control
                       type="text"
@@ -389,7 +388,7 @@ const EmployeeView = ({
                   />
                 </Form.Group>
 
-                <Button type="submit">Aceptar</Button>
+                <button className="button" type="submit">Aceptar</button>
               </Form>
             )}
           </Formik>

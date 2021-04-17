@@ -1,8 +1,7 @@
 import React from "react"
 import { Link } from 'gatsby'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import Button from "react-bootstrap/Button"
+import "../styles/components/employeeList.css"
 
 const EmployeesList = ({ employees, deleteEmployee, getEmployees }) => {
 
@@ -51,15 +50,15 @@ const EmployeesList = ({ employees, deleteEmployee, getEmployees }) => {
               <td>
                 <div className="btnEmployee-Container">
                   <Link to='/editEmployee/' state={{ id: employee._id }}>
-                    <Button variant="warning">Actualizar</Button>
+                    <button className="buttonEmployee-update">Actualizar</button>
                   </Link>
 
-                  <Button
+                  <button
+                    className="buttonEmployee-delete"
                     onClick={() => handleDelete(employee._id)}
-                    variant="danger"
                   >
                     Eliminar
-                </Button>
+                </button>
                 </div>
               </td>
             </tr>

@@ -1,9 +1,9 @@
-.btnClient-Container {
+.btnEmployee-Container {
   display: flex;
   flex-direction: column;
 }
 
-.button-update {
+.buttonEmployee-update {
   background-color: #e2df1bd5;
   border: none;
   color: white;
@@ -16,12 +16,12 @@
   cursor: pointer;
 }
 
-.button-update:hover {
+.buttonEmployee-update:hover {
   transition: 1s;
   background-color: #fffb00;
 }
 
-.button-delete {
+.buttonEmployee-delete {
   background-color: #f11414cc;
   border: none;
   color: white;
@@ -34,7 +34,7 @@
   cursor: pointer;
 }
 
-.button-delete:hover {
+.buttonEmployee-delete:hover {
   transition: 1s;
   background-color: #f11414;
 }

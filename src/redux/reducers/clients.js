@@ -5,6 +5,7 @@ import {
   DELETE_CLIENT,
   READ_CLIENTS_TOTAL_AMOUNT,
   EDIT_CLIENT_AMOUNT,
+  POST_CHARGES_TO_CLIENTS,
 } from "../actionTypes"
 
 const initialState = {
@@ -33,6 +34,8 @@ const clientsReducer = (state = initialState, action) => {
       return newAddState
     case DELETE_CLIENT:
       return { ...state }
+  /*    case POST_CHARGES_TO_CLIENTS:
+      return  */
     default:
       return state
   }

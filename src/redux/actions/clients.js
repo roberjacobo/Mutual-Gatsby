@@ -19,7 +19,7 @@ const parseClients = data => ({
 export const getClients = str => async dispatch => {
   const busqueda = str || ""
   const response = await axios.get(
-    `http://localhost:3000/api/clients?q=${busqueda}`
+    `http://localhost:3000/api/clients?searchText=${busqueda}`
   )
   const { data } = response
   return dispatch(parseClients(data))
@@ -56,6 +56,27 @@ export const editClient = dato => async dispatch => {
   const { data } = response
   alert(response.data.status)
   // return dispatch(editClients(data))
+}
+
+//aumentar cantidad al monto de todos los clientes
+/* const postChargeToClients = cantidadACobrar => ({
+  type: POST_CHARGES_TO_CLIENTS,
+  payload: cantidadACobrar
+}) */
+
+export const postChargeToClients = datosCobro => async dispatch => {
+  /* const {aumentoCantidad} = datosCobro */
+  if (datosCobro.cantidadACobrar !== 0) {
+    const response = await axios({
+      url: `http://localhost:3000/api/clients/postChargesToClients`,
+      method: "POST",
+      headers,
+      data: datosCobro,
+    })
+    return response;
+  } else {
+    alert("Debes ingresar un monto.");
+  }
 }
 
 //Actualizar el monto de un cliente específico
