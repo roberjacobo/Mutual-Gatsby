@@ -11,7 +11,7 @@ import * as loginActions from "../redux/actions/login"
 
 import Header from "../components/header"
 import Footer from "../components/footer"
-import RegistroPago from "../components/registroPago"
+import RegistroPagoEmp from "../components/registroPagoEmpl"
 import EmployeeClientList from "../components/employeeClientList"
 
 import FormControl from "react-bootstrap/FormControl"
@@ -25,7 +25,8 @@ function PanelEmpleado({
 }) {
 
   const [search, setSearch] = useState("")
-  const [clientes, setClients] = useState([])
+  const [clientes] = useState([]);
+
   useEffect(() => {
     getClients(search)
   }, [clientes, search]);
@@ -43,18 +44,18 @@ function PanelEmpleado({
     <>
       <Header />
       <div className="panelEmpleado-container">
-      <div className="logOut"><Button onClick={logout} variant="danger">Salir</Button></div>
-      <div className="panelFlexContainer">
-        <h2>Registro de pagos hechos por los socios</h2>
-        <RegistroPago clients={clients} getClients={getClients} search={search} />
-      </div>
-      <div className="buscar-clientes">
-        <p>Buscar: </p>
-        <FormControl onChange={(e) => setSearch(e.target.value)} />
-      </div>
-      <div className="lista-container">
-        <EmployeeClientList clients={clients} getClients={getClients} />
-      </div>
+        <div className="logOut"><Button onClick={logout} variant="danger">Salir</Button></div>
+        <div className="panelFlexContainer">
+          <h2>Registro de pagos hechos por los socios</h2>
+          <RegistroPagoEmp clients={clients} getClients={getClients} search={search} logged={logged} />
+        </div>
+        <div className="buscar-clientes">
+          <p>Buscar: </p>
+          <FormControl onChange={(e) => setSearch(e.target.value)} />
+        </div>
+        <div className="lista-container">
+          <EmployeeClientList clients={clients} getClients={getClients} />
+        </div>
       </div>
       <Footer />
     </>

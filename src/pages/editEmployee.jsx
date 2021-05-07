@@ -18,10 +18,9 @@ import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
 import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
-import { navigate } from "gatsby";
 
 const schema = yup.object({
-  UserId: yup.string().required(),
+  EmployeeId: yup.string().required(),
   Nombre: yup.string().required(),
   ApellidoPat: yup.string().required(),
   ApellidoMat: yup.string().required(),
@@ -54,7 +53,7 @@ const EditEmployee = ({
   //Inicializa el estado que se enviará con cadenas vacías
   const [values, setValues] = useState({
     Estado: true,
-    UserId: employee ? employee.UserId : '',
+    EmployeeId: employee ? employee.EmployeeId : '',
     Nombre: employee ? employee.Nombre : '',
     ApellidoPat: employee ? employee.ApellidoPat : '',
     ApellidoMat: employee ? employee.ApellidoMat : '',
@@ -102,7 +101,7 @@ const EditEmployee = ({
             onSubmit={sendData}
             initialValues={{
               Estado: true,
-              UserId: '',
+              EmployeeId: '',
               Tipo: '',
               Nombre: '',
               ApellidoPat: '',
@@ -133,11 +132,11 @@ const EditEmployee = ({
                     <Form.Control
                       type="text"
                       placeholder="Identificador"
-                      name="UserId"
-                      value={values.UserId}
+                      name="EmployeeId"
+                      value={values.EmployeeId}
                       onChange={handleChange}
-                      isValid={touched.UserId && !errors.UserId}
-                      isInvalid={!!errors.UserId}
+                      isValid={touched.EmployeeId && !errors.EmployeeId}
+                      isInvalid={!!errors.EmployeeId}
                     />
                     <Form.Control.Feedback>se ve bien</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">

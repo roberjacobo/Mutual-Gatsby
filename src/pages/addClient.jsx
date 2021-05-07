@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react"
 import "../styles/mutual.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-/* import { Link } from "gatsby" */
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"

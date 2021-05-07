@@ -16,6 +16,7 @@ const logOut = () => ({
 
 const headers = {
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
 }
 
 export const login = loginData => async dispatch => {

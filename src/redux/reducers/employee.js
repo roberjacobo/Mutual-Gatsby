@@ -2,7 +2,7 @@ import {
   DELETE_EMPLOYEE, 
   ADD_EMPLOYEE, 
   READ_ALL_EMPLOYEES,
-  EDIT_EMPLOYEE
+  //EDIT_EMPLOYEE
 } from "../actionTypes"
 
 const initialState = {

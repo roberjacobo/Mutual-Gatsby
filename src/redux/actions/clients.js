@@ -105,6 +105,7 @@ export const editClientsAmount = datos => async dispatch => {
 
 const headers = {
   "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*"
 }
 
 export const addClient = data => async dispatch => {

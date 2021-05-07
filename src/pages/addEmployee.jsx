@@ -69,7 +69,7 @@ const EmployeeView = ({
   //Inicializa el estado que se enviará con cadenas vacías
   const [values, setValues] = useState({
     Estado: true,
-    UserId: '',
+    EmployeeId: '',
     Nombre: '',
     ApellidoPat: '',
     ApellidoMat: '',
@@ -97,6 +97,7 @@ const EmployeeView = ({
 
   const sendData = async (event) => {
     event.preventDefault()
+      console.log(values)
       await addEmployee(values)
       await getEmployees()
     }
@@ -111,7 +112,7 @@ const EmployeeView = ({
             onSubmit={sendData}
             initialValues={{
               Estado: true,
-              UserId: '',
+              EmployeeId: '',
               Tipo: '',
               Nombre: '',
               ApellidoPat: '',
@@ -142,11 +143,11 @@ const EmployeeView = ({
                     <Form.Control
                       type="text"
                       placeholder="Identificador"
-                      name="UserId"
-                      value={values.UserId}
+                      name="EmployeeId"
+                      value={values.EmployeeId}
                       onChange={handleChange}
-                      isValid={touched.UserId && !errors.UserId}
-                      isInvalid={!!errors.UserId}
+                      isValid={touched.EmployeeId && !errors.EmployeeId}
+                      isInvalid={!!errors.EmployeeId}
                     />
                     <Form.Control.Feedback>se ve bien</Form.Control.Feedback>
                     <Form.Control.Feedback type="invalid">
@@ -188,7 +189,7 @@ const EmployeeView = ({
                   </Form.Group>
 
                   <Form.Group
-                    as={Col} //1250 2100
+                    as={Col}
                     md="4"
                     controlId="validationFormikUsername"
                   >

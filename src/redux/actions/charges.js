@@ -30,6 +30,7 @@ const addNewCharge = data => ({
 
 const headers = {
   "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*"
 }
 
 export const addCharge = data => async dispatch => {

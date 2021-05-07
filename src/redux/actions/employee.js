@@ -9,6 +9,7 @@ import axios from "axios"
 
 const headers = {
   "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*"
 }
 
 //Lectura de empleados
@@ -53,6 +54,7 @@ const addNewEmployee = data => ({
 
 
 export const addEmployee = data => async dispatch => {
+  console.log("data: ",data)
   const reqObj = {
     url: "http://localhost:3000/api/employees/",
     method: "POST",
