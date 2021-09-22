@@ -21,16 +21,15 @@ const headers = {
 
 export const login = loginData => async dispatch => {
   const loginObj = {
-    url: "http://localhost:3000/api/login",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/login",
     method: "POST",
     headers,
     data: loginData,
   }
-  const response = await axios(loginObj)
-  console.log(response)
-  const { data } = response
-  dispatch(loginIn(data))
-  return response
+  const response = await axios(loginObj);
+  const { data } = response;
+  dispatch(loginIn(data));
+  return response;
 }
 
 export const logout = () => async dispatch => dispatch(logOut())

@@ -1,16 +1,25 @@
 import {
   READ_ALL_CLIENTS,
   ADD_CLIENT,
-  EDIT_CLIENT,
+  /*   EDIT_CLIENT, */
   DELETE_CLIENT,
   READ_CLIENTS_TOTAL_AMOUNT,
-  EDIT_CLIENT_AMOUNT,
-  POST_CHARGES_TO_CLIENTS,
+  /*   EDIT_CLIENT_AMOUNT,
+    POST_CHARGES_TO_CLIENTS, */
+  /*  GET_CLIENTS_COUNT, */
 } from "../actionTypes"
 
 const initialState = {
-  clients: [],
+  clients: {
+    data: {
+    clients: [],
+    clientsCountSearch: 0,
+    totalClients: 0,
+    totalPages: 0,
+  },
   clientsTotalAmount: 0,
+    clientsCount: 0,
+  }
 }
 
 const clientsReducer = (state = initialState, action) => {
@@ -23,8 +32,8 @@ const clientsReducer = (state = initialState, action) => {
       return newState
     case READ_CLIENTS_TOTAL_AMOUNT:
       const newReadAmountState = {
-        clientsTotalAmount: action.payload,
         clients: state.clients,
+        clientsTotalAmount: action.payload,
       }
       return newReadAmountState
     case ADD_CLIENT:

@@ -65,7 +65,7 @@ const Historial = ({
                 <td>{charge.Monto}</td>
                 <td>{charge.UserId}</td>
                 <td>{charge.IdEmpleado}</td>
-                <td>{charge.Fecha}</td>
+                <td>{new Date(charge.Fecha).toJSON().slice(0, 10)}</td>
                 <td>{charge.Nota}</td>
                 {/*                 <td>
                   <div className="btnCharge-Container">

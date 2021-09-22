@@ -23,70 +23,109 @@ function Mutual({
   deleteClient,
   getClientsAmount,
   clientsTotalAmount,
-  postChargeToClients
+  postChargeToClients,
+  //props data
+  location,
 }) {
-  const [search, setSearch] = useState("")
-  const [clientes, setClients] = useState([])
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const clientList = clients ? clients.data.clients : [];
 
   useEffect(() => {
-    if (logged.rol !== "ADMIN_ROLE")
-      navigate("/panelEmpleado");
-    getClients(search)
-    getClientsAmount()
-  }, [clientes, search]);
+    if (logged.rol !== "ADMIN_ROLE") navigate("/panelEmpleado");
+    getClients(search, page);
+    getClientsAmount();
+  }, []);
+
+  const getClientsSearch = async (page, search) => {
+    setPage(1);
+    await getClients(search, page);
+  }
+
+
+  const nextPage = async (page, search) => {
+    setPage(page + 1);
+    await getClients(search, page);
+  }
+
+  const previousPage = async (page, search) => {
+    setPage(page - 1);
+    await getClients(search, page);
+  }
 
   useEffect(() => {
     const { ok } = logged
     if (!ok) {
-      navigate('/loginPage/')
-    } else {
-      console.log('')
+      navigate("/loginPage/")
     }
-  }, [logged]);
-
+  }, [logged])
   return (
     <>
       <div className="btn-form-container">
         <div className="btn-container">
-          <Link to="/addClient/"><button className="button">Suscribir Cliente</button></Link>
-          <Link to="/addEmployee/"><button className="button">Nuevo Empleado</button></Link>
-          <a href="#pagos"><button className="button">Registrar Pago</button></a>
+          <Link to="/addClient/">
+            <button className="button">Suscribir Cliente</button>
+          </Link>
+          <Link to="/addEmployee/">
+            <button className="button">Nuevo Empleado</button>
+          </Link>
+          {/* <a href="#pagos">
+            <button className="button">Registrar Pago</button>
+          </a> */}
           <button className="button">Registrar Egreso</button>
-          <Link to="/historial/"><button className="button">Historial de Pagos</button></Link>
+          <Link to="/historial/">
+            <button className="button">Historial de Pagos</button>
+          </Link>
         </div>
-        <div className="logOut"><button onClick={logout} className="buttonLogOut">Salir de la Mutual</button></div>
-        <div className="form-container">
+        <div className="logOut">
+          <button onClick={logout} className="buttonLogOut">
+            Salir de la Mutual
+          </button>
         </div>
+        <div className="form-container"></div>
       </div>
-        <div className="egresos-container">
-        <Fichatotales clients={clients} clientsTotalAmount={clientsTotalAmount} postChargeToClients={postChargeToClients} />
-        </div>
+      <div className="egresos-container">
+        <Fichatotales
+          totalClients={clients.data.totalClients}
+          clientsTotalAmount={clientsTotalAmount}
+          postChargeToClients={postChargeToClients}
+        />
+      </div>
 
-
-        <div className="registroPago-container" id="pagos">
+      {/* <div className="registroPago-container" id="pagos">
         <h2>Registro de pagos hechos por los socios</h2>
-        <RegistroPago clients={clients} getClients={getClients} search={search} />
+        <RegistroPago getClients={getClients} search={search} />
+      </div> */}
+      <div className="filtro-container">
+        <div className="buscar-clientes">
+          <p>Buscar clientes: </p>
+          <div>
+            <FormControl onChange={e => setSearch(e.target.value)} />
+            <button onClick={() => getClientsSearch(page, search)}>Buscar</button>
+          </div>
+          filtro: ID, Apellido paterno y ruta
         </div>
 
-
-      {/*<div className="egresos-container">
-          <h2>Registro de egresos</h2>
-        <Egresos />
-        </div> */}
-
-      <div className="buscar-clientes">
-        <p>Buscar clientes: </p>
-        <FormControl onChange={(e) => setSearch(e.target.value)} />
-        filtro: ID, Apellido paterno y ruta
+        <div className="paginacion-clientes">
+          <p>Paginación:</p>
+          {page > 1 ? (
+            <button onClick={() => previousPage(page, search)}>Anterior</button>
+          ) : null}
+          <FormControl value={page} disabled />
+          {page !== clients.totalPages ? (
+            <button onClick={() => nextPage(page, search)}>Siguiente</button>
+          ) : null}
+        </div>
       </div>
       <div className="lista-container">
-        <ClientsList deleteClient={deleteClient} clients={clients} getClients={getClients} />
+        <ClientsList clients={clientList} deleteClient={deleteClient} />
       </div>
     </>
   )
 }
 
-const mapStateToProps = (state) => {
+
+const mapStateToProps = state => {
   return {
     clients: state.clients.clients,
     clientsTotalAmount: state.clients.clientsTotalAmount,
@@ -94,6 +133,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ ...clientsActions, ...loginActions }, dispatch)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ ...clientsActions, ...loginActions }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mutual)

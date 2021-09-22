@@ -21,7 +21,7 @@ const parseEmployees = data => ({
 export const getEmployees = str => async dispatch => {
   const busqueda = str || ""
   const response = await axios.get(
-    `http://localhost:3000/api/employees?q=${busqueda}`
+    `https://backend-yuy6unuyba-uw.a.run.app/api/employees?q=${busqueda}`
   )
   const { data } = response
   return dispatch(parseEmployees(data))
@@ -36,7 +36,7 @@ const editEmployees = data => ({
 export const editEmployee = dato => async dispatch => {
   const EmployeeId = dato.EmployeeId
   const response = await axios({
-    url: `http://localhost:3000/api/employees/${EmployeeId}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/employees/${EmployeeId}`,
     method: "PUT",
     headers,
     data: dato,
@@ -56,7 +56,7 @@ const addNewEmployee = data => ({
 export const addEmployee = data => async dispatch => {
   console.log("data: ",data)
   const reqObj = {
-    url: "http://localhost:3000/api/employees/",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/employees/",
     method: "POST",
     headers,
     data,
@@ -76,7 +76,7 @@ const deleteEmployees = data => ({
 export const deleteEmployee = _id => async dispatch => {
   console.log(_id)
   const response = await axios({
-    url: `http://localhost:3000/api/employees/${_id}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/employees/${_id}`,
     method: "DELETE",
     headers,
     data: { datos },

@@ -15,46 +15,47 @@ import RegistroPagoEmp from "../components/registroPagoEmpl"
 import EmployeeClientList from "../components/employeeClientList"
 
 import FormControl from "react-bootstrap/FormControl"
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button"
 
-function PanelEmpleado({
-  clients,
-  getClients,
-  logout,
-  logged
-}) {
-
+function PanelEmpleado({ clients, getClients, logout, logged }) {
+  const [page, setPage] = useState(1)
   const [search, setSearch] = useState("")
-  const [clientes] = useState([]);
+  const [clientList, setClientList] = useState([])
 
   useEffect(() => {
-    getClients(search)
-  }, [clientes, search]);
+    getClients(search, page)
+    setClientList(clients.data.clients)
+  }, [])
 
   useEffect(() => {
     const { ok } = logged
     if (!ok) {
-      navigate('/loginPage/')
+      navigate("/loginPage/")
     } else {
-      console.log('')
+      console.log("")
     }
-  }, [logged]);
+  }, [logged])
 
   return (
     <>
       <Header />
       <div className="panelEmpleado-container">
-        <div className="logOut"><Button onClick={logout} variant="danger">Salir</Button></div>
-        <div className="panelFlexContainer">
+        <div className="logOut">
+          <Button onClick={logout} variant="danger">
+            Salir
+          </Button>
+        </div>
+        {/*         <div className="panelFlexContainer">
           <h2>Registro de pagos hechos por los socios</h2>
-          <RegistroPagoEmp clients={clients} getClients={getClients} search={search} logged={logged} />
-        </div>
-        <div className="buscar-clientes">
-          <p>Buscar: </p>
-          <FormControl onChange={(e) => setSearch(e.target.value)} />
-        </div>
+          <RegistroPagoEmp
+            clients={clients}
+            getClients={getClients}
+            search={search}
+            logged={logged}
+          />
+        </div> */}
         <div className="lista-container">
-          <EmployeeClientList clients={clients} getClients={getClients} />
+          <EmployeeClientList clients={clientList} getClients={getClients} />
         </div>
       </div>
       <Footer />
@@ -62,7 +63,7 @@ function PanelEmpleado({
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     clients: state.clients.clients,
     employees: state.employees.employees,
@@ -70,6 +71,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ ...clientsActions, ...employeesActions, ...loginActions }, dispatch)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    { ...clientsActions, ...employeesActions, ...loginActions },
+    dispatch
+  )
 
 export default connect(mapStateToProps, mapDispatchToProps)(PanelEmpleado)

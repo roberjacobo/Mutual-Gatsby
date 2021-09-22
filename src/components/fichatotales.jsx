@@ -16,17 +16,16 @@ const schema = yup.object({
 
 const FichaTotales = ({
   //actions
-  clients,
   clientsTotalAmount,
-  postChargeToClients
+  postChargeToClients,
+  totalClients,
 }) => {
-
   //inicializa el estado que se enviará con cadenas vacías
   const [chargeValue, setChargeValue] = useState({
-    cantidadACobrar: 0
+    cantidadACobrar: 0,
   })
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     event.preventDefault()
     setChargeValue({
       ...chargeValue,
@@ -34,7 +33,8 @@ const FichaTotales = ({
     })
   }
 
-  const sendData = async (event) => {
+
+  const sendData = async event => {
     event.preventDefault()
     await postChargeToClients(chargeValue)
   }
@@ -46,49 +46,46 @@ const FichaTotales = ({
           <h2>Totales</h2>
           <br />
           <h4>Total de Socios inscritos:</h4>
-          <label>{clients ? clients.length : "0"}</label>
+          <label>{totalClients}</label>
           <h4>Adeudo total de socios:</h4>
           <label>${clientsTotalAmount}</label>
           <br />
-            <Fragment>
-              <Formik
-                validationSchema={schema}
-                onSubmit={sendData}
-                initialValues={{
-                  cantidadACobrar: ''
-                }}>
-                {({
-                  handleBlur,
-                  touched,
-                  isValid,
-                  isInvalid,
-                  errors,
-                }) => (
-                  <Form noValidate onSubmit={sendData}>
-                    <Form.Group as={Col} controlId="validationFormik95">
-                      <Form.Label>Cantidad a cobrar:</Form.Label>
-                      <InputGroup>
-                        <Form.Control
-                          type="Number"
-                          placeholder="6"
-                          name="cantidadACobrar"
-                          value={chargeValue.cantidadACobrar}
-                          onChange={handleChange}
-                        />
-                        <Form.Control.Feedback>Se ve bien</Form.Control.Feedback>
-                        <Form.Control.Feedback type="invalid">
-                          {errors.cantidadACobrar}
-                        </Form.Control.Feedback>
-                      </InputGroup>
-                    </Form.Group>
-                    <br />
+          <Fragment>
+            <Formik
+              validationSchema={schema}
+              onSubmit={sendData}
+              initialValues={{
+                cantidadACobrar: "",
+              }}
+            >
+              {({ handleBlur, touched, isValid, isInvalid, errors }) => (
+                <Form noValidate onSubmit={sendData}>
+                  <Form.Group as={Col} controlId="validationFormik95">
+                    <Form.Label>Cantidad a cobrar:</Form.Label>
+                    <InputGroup>
+                      <Form.Control
+                        type="Number"
+                        placeholder="6"
+                        name="cantidadACobrar"
+                        value={chargeValue.cantidadACobrar}
+                        onChange={handleChange}
+                      />
+                      <Form.Control.Feedback>Se ve bien</Form.Control.Feedback>
+                      <Form.Control.Feedback type="invalid">
+                        {errors.cantidadACobrar}
+                      </Form.Control.Feedback>
+                    </InputGroup>
+                  </Form.Group>
+                  <br />
                   <div className="btn-container">
-                    <Button type="submit" variant="dark" id="botonCobro">Mutual Máster</Button>
+                    <Button type="submit" variant="dark" id="botonCobro">
+                      Mutual Máster
+                    </Button>
                   </div>
-                  </Form>
-                )}
-              </Formik>
-            </Fragment>
+                </Form>
+              )}
+            </Formik>
+          </Fragment>
         </div>
       </div>
     </div>

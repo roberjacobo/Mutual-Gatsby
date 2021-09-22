@@ -5,11 +5,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import "../styles/components/clientsList.css"
 
-const ClientsList = ({ clients, deleteClient, getClients }) => {
+const ClientsList = ({ clients, deleteClient }) => {
 
   const handleDelete = async (_id) => {
-    await deleteClient(_id)
-    await getClients()
+    await deleteClient(_id);
   }
 
   return (
@@ -21,7 +20,6 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
             <th>Nombre(s)</th>
             <th>Primer Apellido</th>
             <th>Segundo Apellido</th>
-            {/* <th>CURP</th> */}
             <th>Colonia</th>
             <th>Dirección</th>
             <th>Ciudad</th>
@@ -42,7 +40,6 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
               <td>{client.Nombre}</td>
               <td>{client.ApellidoPat}</td>
               <td>{client.ApellidoMat}</td>
-             {/*  <td>{client.Curp}</td> */}
               <td>{client.Colonia}</td>
               <td>{client.Direccion}</td>
               <td>{client.Ciudad}</td>
@@ -50,7 +47,7 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
               <td>{client.Telefono}</td>
               <td>{client.Correo}</td>
               <td>${client.Adeudo}.00</td>
-              <td>{client.FechaInscripcion}</td>
+              <td>{new Date(client.FechaInscripcion).toJSON().slice(0, 10)}</td>
               <td>{client.TipoCliente}</td>
               <td>{client.Ruta}</td>
               <td>
@@ -64,7 +61,13 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
                     variant="danger"
                   >
                     Eliminar
-                </button>
+                  </button >
+                  <Link to='/paymentRegister/' state={{ id: client._id }}/* 
+                    onClick={() => setChargeId()} */>
+                    <button className="button-charge">
+                      Cobrar
+                    </button>
+                  </Link>
                 </div>
               </td>
             </tr>
@@ -73,6 +76,7 @@ const ClientsList = ({ clients, deleteClient, getClients }) => {
       </table>
     </div>
   )
+
 }
 
 export default ClientsList

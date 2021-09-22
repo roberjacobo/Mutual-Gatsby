@@ -1,13 +1,18 @@
 import {
   READ_ALL_CLIENTS,
   ADD_CLIENT,
-  EDIT_CLIENT,
+  /* EDIT_CLIENT, */
   DELETE_CLIENT,
   READ_CLIENTS_TOTAL_AMOUNT,
   EDIT_CLIENT_AMOUNT,
 } from "../actionTypes"
 
 import axios from "axios"
+
+const headers = {
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*"
+}
 
 
 //Lectura de clientes
@@ -16,14 +21,17 @@ const parseClients = data => ({
   payload: data,
 })
 
-export const getClients = str => async dispatch => {
-  const busqueda = str || ""
-  const response = await axios.get(
-    `http://localhost:3000/api/clients?searchText=${busqueda}`
-  )
-  const { data } = response
-  return dispatch(parseClients(data))
+export const getClients = (searchText, page) => async dispatch => {
+  const response = await axios({
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/clients/clients`,
+    method: "POST",
+    headers,
+    data: { searchText, page },
+  })
+  let data = response;
+  return dispatch(parseClients(data));
 }
+
 
 // Lectura de adeudo total de clientes (socios)
 const readClientsAmount = data => ({
@@ -33,27 +41,27 @@ const readClientsAmount = data => ({
 
 export const getClientsAmount = () => async dispatch => {
   const response = await axios.get(
-    `http://localhost:3000/api/clients/clientsAmount`
+    `https://backend-yuy6unuyba-uw.a.run.app/api/clients/clientsAmount`
   )
-  const { data } = response
+  let { data } = response
   return dispatch(readClientsAmount(data))
 }
 
 //Actualizar clientes
-const editClients = data => ({
+/* const editClients = data => ({
   type: EDIT_CLIENT,
   payload: data,
-})
+}) */
 
 export const editClient = dato => async dispatch => {
   const UserId = dato.UserId
   const response = await axios({
-    url: `http://localhost:3000/api/clients/${UserId}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/clients/${UserId}`,
     method: "PUT",
     headers,
     data: dato,
   })
-  const { data } = response
+  //const { data } = response 
   alert(response.data.status)
   // return dispatch(editClients(data))
 }
@@ -68,7 +76,7 @@ export const postChargeToClients = datosCobro => async dispatch => {
   /* const {aumentoCantidad} = datosCobro */
   if (datosCobro.cantidadACobrar !== 0) {
     const response = await axios({
-      url: `http://localhost:3000/api/clients/postChargesToClients`,
+      url: `https://backend-yuy6unuyba-uw.a.run.app/api/clients/postChargesToClients`,
       method: "POST",
       headers,
       data: datosCobro,
@@ -88,12 +96,12 @@ const editClientAmount = data => ({
 export const editClientsAmount = datos => async dispatch => {
   const UserId = datos.UserId
   const response = await axios({
-    url: `http://localhost:3000/api/clients/editClientAmount/${UserId}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/clients/editClientAmount/${UserId}`,
     method: "PUT",
     headers,
     data: datos,
   })
-  const { data } = response
+  let { data } = response
   //return dispatch(editClientAmount(data))
 }
 
@@ -103,14 +111,11 @@ export const editClientsAmount = datos => async dispatch => {
     payload: data,
   })
 
-const headers = {
-  "Content-Type": "application/json",
-  "Access-Control-Allow-Origin": "*"
-}
+
 
 export const addClient = data => async dispatch => {
   const reqObj = {
-    url: "http://localhost:3000/api/clients/",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/clients/",
     method: "POST",
     headers,
     data,
@@ -128,14 +133,13 @@ const deleteClients = data => ({
 })
 
 export const deleteClient = _Id => async dispatch => {
-  console.log(_Id)
   const response = await axios({
-    url: `http://localhost:3000/api/clients/${_Id}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/clients/${_Id}`,
     method: "DELETE",
     headers,
     data: { datos },
   })
-  const { datos } = response
+  let { datos } = response
   alert(response.data.status)
 
   return dispatch(deleteClients(datos))

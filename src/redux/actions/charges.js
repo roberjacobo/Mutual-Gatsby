@@ -16,7 +16,7 @@ const parseCharges = data => ({
 export const getCharges = str => async dispatch => {
   const busqueda = str || ""
   const response = await axios.get(
-    `http://localhost:3000/api/charges/?q=${busqueda}`
+    `https://backend-yuy6unuyba-uw.a.run.app/api/charges/?q=${busqueda}`
   )
   const { data } = response
   return dispatch(parseCharges(data))
@@ -35,7 +35,7 @@ const headers = {
 
 export const addCharge = data => async dispatch => {
   const reqObj = {
-    url: "http://localhost:3000/api/charges/",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/charges/",
     method: "POST",
     headers,
     data,
@@ -54,7 +54,7 @@ const editCharges = data => ({
 
 export const editCharge = data => async dispatch => {
   const response = await axios({
-    url: "http://localhost:3000/api/charges/",
+    url: "https://backend-yuy6unuyba-uw.a.run.app/api/charges/",
     method: "PUT",
     headers,
     data,
@@ -73,7 +73,7 @@ const deleteCharges = data => ({
 export const deleteCharge = _Id => async dispatch => {
   console.log(_Id)
   const response = await axios({
-    url: `http://localhost:3000/api/charges/${_Id}`,
+    url: `https://backend-yuy6unuyba-uw.a.run.app/api/charges/${_Id}`,
     method: "DELETE",
     headers,
     data: { datos },

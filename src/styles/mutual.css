@@ -17,6 +17,15 @@
   align-items: center;
 }
 
+.filtro-container {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  height: 50px;
+  align-items: center;
+  margin: 70px 500px 100px 10px;
+}
+
 .form-container p {
   margin-right: 10px;
   margin-bottom: 0px;
@@ -51,13 +60,11 @@
 }
 
 .buscar-clientes {
-  width: 35%;
+  width: 65%;
   flex-direction: end;
   align-items: end;
   justify-content: center;
-  margin-left: 10%;
-  margin-top: 10%;
-  margin-bottom: 5%;
+  margin: 10% 10% 10% 10%;
 }
 
 .buttonLogOut {

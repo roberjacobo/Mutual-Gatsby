@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState, useEffect } from "react"
 import "../styles/mutual.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -33,23 +33,22 @@ const schema = yup.object({
 })
 
 const ClientView = ({
+  //redux prop
+  clients,
   //actions
   addClient,
   editClient,
   getClients,
   //props data
-  location: { state },
-  //redux prop
-  clients
+  location: { state }
 }) => {
-  const id = state ? state.id : 0
+  const clientList = clients ? clients.data.clients : [];
+  const id = state ? state.id : 0;
+  const client = clientList.filter(client => client._id === id)[0] || null;
 
-  const client = clients.filter(client => client._id === id)[0] || null
+  const clientDateIncription = client ? client.FechaInscripcion : '';
+  const newClientDateIncription = clientDateIncription.substring(0, 10);
 
-  //const date = new Date();
-  //date.setDate(client.FechaInscripcion)
-
-  //Inicializa el estado que se enviará con cadenas vacías
   const [values, setValues] = useState({
     Estado: true,
     UserId: client ? client.UserId : '',
@@ -66,8 +65,9 @@ const ClientView = ({
     Correo: client ? client.Correo : '',
     Adeudo: client ? client.Adeudo : '',
     Ruta: client ? client.Ruta : '',
-    FechaInscripcion: client ? client.FechaInscripcion : '',
+    FechaInscripcion: client ? newClientDateIncription : '',
   });
+
 
   //Función que vigila el cambio de estado del formulario
   const handleChange = (event) => {
@@ -87,7 +87,7 @@ const ClientView = ({
     }
     await getClients();
     window.history.back();
-    // call actions -
+    // call actions
   }
 
   return (
@@ -126,7 +126,6 @@ const ClientView = ({
             }) => (
               <Form noValidate onSubmit={sendData}>
                 <Form.Row>
-
                   <Form.Group as={Col} md="4" controlId="validationFormik00">
                     <Form.Label>Identificador</Form.Label>
                     <Form.Control
@@ -436,10 +435,10 @@ const ClientView = ({
     </>
   )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    clients: state.clients.clients
+    clients: state.clients.clients,
   }
 }
-const mapDispatchToProps = dispatch => bindActionCreators(clientsActions, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ ...clientsActions }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(ClientView)

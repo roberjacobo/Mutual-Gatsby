@@ -1,18 +1,19 @@
-import React, { Fragment, useState } from "react"
-import "../styles/components/registroPago.css"
+import React, { Fragment, useState, useEffect } from "react";
+import { navigate } from "gatsby"
+import "../styles/components/registroPago.css";
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import * as chargesActions from "../redux/actions/charges"
 import * as clientsActions from "../redux/actions/clients"
+import * as loginActions from "../redux/actions/login"
+import * as chargesActions from "../redux/actions/charges"
 
-import * as yup from "yup"
-import { Formik } from "formik"
+import * as yup from "yup";
+import { Formik } from "formik";
 
-
-import InputGroup from "react-bootstrap/InputGroup"
-import Form from "react-bootstrap/Form"
-import Col from "react-bootstrap/Col"
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 
 const schema = yup.object({
   IdCobroUsuario: yup.string().required(),
@@ -22,32 +23,37 @@ const schema = yup.object({
   Fecha: yup.string().required(),
 })
 
-const ChargeView = ({
+const PaymentRegister = (
   //actions
-  addCharge,
-  editClientsAmount,
-  clients,
-  getClients,
-  search
-}) => {
+  {
+    charges,
+    addCharge,
+    getCharges,
+    logged,
+    editClientsAmount,
+    clients,
+    getClients,
+    search,
+    location: { state }
+  }) => {
   const charge = 0;
+  const client = clients ? clients : [];
+  console.log("charges: ", charges.length);
 
-  /*   const [cobros, setCobros] = useState([])
-    useEffect(() => {
-      getCharges()
-    }, [cobros]); */
-
+  useEffect(() => {
+    getCharges()
+  }, []);
+  //const newIdCharge = charges ? charges.charges.length : 0;
   //inicializa el estado que se enviará con cadenas vacías
   const [chargeValues, setChargeValues] = useState({
     Estado: true,
-    IdCobroUsuario: charge ? charge.IdCobroUsuario : '',
-    Monto: charge ? charge.Monto : '',
-    UserId: charge ? charge.UserId : '',
-    IdEmpleado: charge ? charge.IdEmpleado : '',
-    Fecha: charge ? charge.Fecha : '',
-    Nota: charge ? charge.Nota : '',
-  })
-
+    IdCobroUsuario: charges.length,
+    Monto: '',
+    UserId: client ? client.UserId : '',
+    IdEmpleado: logged.id,
+    Fecha: new Date().toJSON().slice(0, 10),
+    Nota: '',
+  });
   //Función que vigila el cambio de estado del formulario
   const handleChange = (event) => {
     event.preventDefault()
@@ -60,12 +66,11 @@ const ChargeView = ({
   const sendData = async (event) => {
     event.preventDefault()
     addCharge(chargeValues)
-    const foundClient = clients.find(element => element.UserId === chargeValues.UserId)
-    foundClient.Adeudo = foundClient.Adeudo - Number(chargeValues.Monto)
-    await editClientsAmount(foundClient)
+    client.Adeudo = client.Adeudo - Number(chargeValues.Monto)
+    await editClientsAmount(client)
     await getClients(search);
+    navigate("/historial");
   }
-
   return (
     <>
       <Fragment>
@@ -82,10 +87,7 @@ const ChargeView = ({
             }}
           >
             {({
-              handleBlur,
               touched,
-              isValid,
-              isInvalid,
               errors,
             }) => (
               <Form noValidate onSubmit={sendData}>
@@ -175,7 +177,7 @@ const ChargeView = ({
                       type="date"
                       placeholder="Fecha"
                       name="Fecha"
-                      value={chargeValues.Fecha}
+                      defaultValue={chargeValues.Fecha}
                       onChange={handleChange}
                       isValid={touched.Fecha && !errors.Fecha}
                       isInvalid={!!errors.Fecha}
@@ -223,7 +225,6 @@ const ChargeView = ({
                 </Form.Group>
 
                 <button className="button" type="submit">Aceptar</button>
-                {/* <Button className="btn-EditarPago" type="">Editar</Button> */}
               </Form>
             )}
           </Formik>
@@ -232,13 +233,14 @@ const ChargeView = ({
     </>
   )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
+  console.log("state: ", state);
   return {
+    clients: state.clients.clients.data.clients[0],
+    logged: state.login.login,
     charges: state.charges.charges,
-    clients: state.clients.clients,
     editClientsAmount: state.clients.editClientsAmount
   }
 }
-const mapDispatchToProps = dispatch => bindActionCreators({ ...chargesActions, ...clientsActions }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(ChargeView)
-
+const mapDispatchToProps = dispatch => bindActionCreators({ ...clientsActions, ...loginActions, ...chargesActions }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentRegister)
