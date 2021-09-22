@@ -14,7 +14,7 @@ export default function Footer () {
           <div className="row">
             <div className="col-md-4 footer-brand animated fadeInLeft">
               <img src={Logo} alt="Logotipo" />
-              <p>© 2020 Funerales Rafael Paz, Desarrollado por <Link href="_blank" to="https://www.quantumstudios.dev">Quantum Studios</Link></p>
+              <p>© 2021 Funerales Rafael Paz, Desarrollado por <Link target="_blank" to="https://www.quantumstudios.dev">Quantum Studios</Link></p>
             </div>
 
             <div className="col-md-3 footer-nav animated fadeInUp">
