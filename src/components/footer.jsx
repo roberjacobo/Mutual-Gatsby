@@ -18,7 +18,7 @@ export default function Footer () {
             </div>
 
             <div className="col-md-3 footer-nav animated fadeInUp">
-              <div className="col-md-6">
+              <div className="col">
                 <ul className="list">
                   <li>
                     <a>

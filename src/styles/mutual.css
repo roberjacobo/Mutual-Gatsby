@@ -5,6 +5,38 @@
   margin-top: 50px;
 }
 
+.mutual-top-header {
+  margin-bottom: 20px;
+  padding: 25px 0;
+}
+
+.mutual-top-header span {
+  float: right;
+}
+
+.mutual-top-header a {
+  margin-right: 25px;
+  padding-bottom: 10px;
+}
+
+.mutual-top-header a.active {
+  border-bottom: 2px solid #0B48A6;
+}
+
+.mutual-top-header a.active button {
+  color: #0B48A6;
+}
+
+.mutual-top-header img {
+  max-width: 100px;
+}
+
+.cta-link {
+  background-color: transparent;
+  border: 0;
+  font-weight: 500;
+}
+
 .btn-container button {
   padding: 10px;
   margin-left: 10px;
@@ -15,6 +47,39 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.filter {
+  margin-top: 40px !important;
+}
+.filter input {
+  display: inline-block;
+  max-width: 250px;
+}
+.search-field {
+  position: relative;
+}
+.search-field svg{
+  position: absolute;
+  fill: #888;
+  left: 22px;
+  top: 8px;
+}
+.search-field button {
+  margin-left: 12px;
+}
+.pagination-field {
+  text-align: right;
+}
+.pagination-field button {
+  background: transparent;
+  border: none;
+}
+
+.list {
+  margin-top: 30px;
+  max-height: 50vh;
+  overflow: auto;
 }
 
 .form-container p {
@@ -32,7 +97,7 @@
 .registroPago-container {
   margin-left: 200px;
   margin-right: 200px;
-  margin-bottom: 45px;
+  margin-bottom: 10px;
 }
 
 .egresos-container {
@@ -42,7 +107,7 @@
 }
 
 .lista-container {
-  margin-left: 25%;
+  margin-left: 4%;
   margin-right: 25%;
 }
 
@@ -50,7 +115,61 @@
   display: flex;
 }
 
+.buscar-clientes {
+  width: 65%;
+  flex-direction: end;
+  align-items: end;
+  justify-content: center;
+  margin: 10% 10% 10% 10%;
+}
+
+.buttonLogOut {
+  border: 2px solid black !important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #008bbabb;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  transition: 1s;
+  background-color: #008bba;
+}
+
+@media only screen and (max-width: 1320px) {
+  .lista-container {
+    margin-left: 5px;
+    margin-right: 5%;
+  }
+}
+
 @media only screen and (max-width: 800px) {
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .logOut {
+    display: flex;
+    flex-direction: column;
+  }
+
   .formulario-container {
     margin-left: 5px;
     margin-right: 5px;
@@ -68,6 +187,17 @@
     margin-right: 5px;
     margin-bottom: 5px;
   }
+
+  .buscar-clientes {
+    display: flex;
+    width: 50%;
+    flex-direction: end;
+    align-items: end;
+    justify-content: center;
+    margin-left: 10%;
+    margin-top: 5%;
+  }
+
   .lista-container {
     margin-left: 25%;
     margin-right: 25%;

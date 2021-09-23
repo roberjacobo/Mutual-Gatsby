@@ -1,0 +1,40 @@
+.btnEmployee-Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonEmployee-update {
+  background-color: #e2df1bd5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttonEmployee-update:hover {
+  transition: 1s;
+  background-color: #fffb00;
+}
+
+.buttonEmployee-delete {
+  background-color: #f11414cc;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttonEmployee-delete:hover {
+  transition: 1s;
+  background-color: #f11414;
+}

@@ -1,65 +1,56 @@
-import React from "react"
-import Table from "react-bootstrap/Table"
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React from "react";
+import { Link } from 'gatsby';
 
-import "../styles/components/clientsList.css"
-import Button from "react-bootstrap/Button"
+import 'bootstrap/dist/css/bootstrap.css';
 
-const ClientsList = ({clients}) => {
+import "../styles/components/clientsList.css";
+import Pencil from '../icons/pencil.svg';
+import Delete from '../icons/user-delete.svg';
+import Card from '../icons/credit-card.svg';
+
+const ClientsList = ({ clients, deleteClient }) => {
+
+  const handleDelete = async (_id) => {
+    await deleteClient(_id);
+  }
 
   return (
-    <div className="table-container">
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre(s)</th>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
-            <th>CURP</th>
-            <th>Colonia</th>
-            <th>Dirección</th>
-            <th>Celular</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Adeudo</th>
-            <th>Fecha de inscripción</th>
-            <th>Tipo</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {clients?clients.map(clients => (
-            <tr>
-              <td>{clients._id}</td>
-              <td>{clients.Nombre}</td>
-              <td>{clients.ApellidoPat}</td>
-              <td>{clients.ApellidoMat}</td>
-              <td>{clients.Curp}</td>
-              <td>{clients.Colonia}</td>
-              <td>{clients.Direccion}</td>
-              <td>{clients.Celular}</td>
-              <td>{clients.Telefono}</td>
-              <td>{clients.Correo}</td>
-              <td>${clients.Adeudo}.00</td>
-              <td>{clients.FechaInscripcion}</td>
-              <td>{clients.Tipo}</td> 
-            <td> 
-              <div className="btnClient-Container">
-                <Button variant="warning">Actualizar</Button>
-                <Button
-                /*  onClick={() => removeClient(client.id)}
-                    variant="danger" */
-                >
-                  Eliminar
-                </Button>
+    <div>
+      <div className="row thead">
+        <div className="col-1">Tipo</div> {/* 1 */}
+        <div className="col-2">Cliente</div> {/* 3 */}
+        <div className="col-3">Dirección</div> {/* 3 */}
+        <div className="col-2">Teléfonos</div> {/* 2 */}
+        <div className="col-1">Adeudo</div> {/* 1 */}
+        <div className="col-2">Fecha I</div> {/* 1 */}
+        <div className="col-1">Acciones</div> {/* 1 */}
+      </div>
+      {clients ? clients.map(client => (
+            <div className="row trow">
+              <div className="col-1 client-type">
+                <span className="ctype">{client.TipoCliente !== '' ? client.TipoCliente : '-'}</span>
+                <span className="croute">{client.Ruta !== '' ? client.Ruta : '-'}</span>
               </div>
-            </td>
-          </tr>
-          )):""}
-        </tbody>
-      </Table>
+              <div className="col-2">
+                {client.UserId} {client.Nombre}<br />
+                <span className="lastname">{client.ApellidoPat} {client.ApellidoMat}</span></div>
+              <div className="col-3">{client.Direccion}<br /><span className="lastname">{client.Colonia}, {client.Ciudad}</span></div>
+              <div className="col-2">{client.Telefono}<br />{client.Celular}</div>
+              <div className="col-1">${client.Adeudo}.00</div>
+              <div className="col-2">{new Date(client.FechaInscripcion).toJSON().slice(0, 10)}</div>
+              <div className="col-1 actions">
+                <Link to='/addClient/' state={{ id: client._id }}>
+                  <Pencil />
+                </Link>
+                <a href="#" onClick={() => handleDelete(client._id)}><Delete /></a>
+                {/* <a href="#" onClick={setChargeId}><Card /></a> */}
+              </div>
+            </div>
+          )) : ""}
     </div>
   )
+
 }
 
 export default ClientsList

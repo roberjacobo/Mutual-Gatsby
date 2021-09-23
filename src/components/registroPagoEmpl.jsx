@@ -1,0 +1,200 @@
+import React, { Fragment, useState } from "react"
+import "../styles/components/registroPago.css"
+/* import { Link } from "gatsby" */
+
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import * as chargesActions from "../redux/actions/charges"
+import * as clientsActions from "../redux/actions/clients"
+
+import * as yup from "yup"
+import { Formik } from "formik"
+
+
+//import InputGroup from "react-bootstrap/InputGroup"
+import Form from "react-bootstrap/Form"
+import Col from "react-bootstrap/Col"
+
+const schema = yup.object({
+  IdCobroUsuario: yup.string().required(),
+  Monto: yup.string().required(),
+  IdCliente: yup.string().required(),
+  IdEmpleado: yup.string().required(),
+  Fecha: yup.string().required(),
+})
+
+const ChargeViewEmp = ({
+  //actions
+  addCharge,
+  editClientsAmount,
+  clients,
+  getClients,
+  search,
+  logged,
+}) => {
+
+  //inicializa el estado que se enviará con cadenas vacías
+
+  const fecha = new Date();
+  //console.log(fecha)
+
+
+  const [chargeValues, setChargeValues] = useState({
+    Estado: true,
+    IdCobroUsuario:'',
+    Monto: '',
+    UserId: logged.id,
+    IdEmpleado:'',
+    Fecha: fecha,
+    Nota: '',
+  })
+
+  //Función que vigila el cambio de estado del formulario
+  const handleChange = (event) => {
+    event.preventDefault()
+    setChargeValues({
+      ...chargeValues,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const sendData = async (event) => {
+    event.preventDefault()
+    addCharge(chargeValues)
+    const foundClient = clients.find(element => element.UserId === chargeValues.UserId)
+    foundClient.Adeudo = foundClient.Adeudo - Number(chargeValues.Monto)
+    await editClientsAmount(foundClient)
+    await getClients(search);
+  }
+
+  return (
+    <>
+      <Fragment>
+        <div>
+          <Formik
+            validationSchema={schema}
+            onSubmit={sendData}
+            initialValues={{
+              Estado: true,
+              Monto: '',
+              UserId: '',
+              IdEmpleado: '',
+              Fecha: '',
+            }}
+          >
+            {({
+              handleBlur,
+              touched,
+              isValid,
+              isInvalid,
+              errors,
+            }) => (
+              <Form noValidate onSubmit={sendData}>
+                <Form.Row>
+
+                  <Form.Group as={Col} md="4" controlId="validationFormik01">
+                    <Form.Label>Id del pago realizado</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Id"
+                      name="IdCobroUsuario"
+                      value={chargeValues.IdCobroUsuario}
+                      onChange={handleChange}
+                      isValid={touched.IdCobroUsuario && !errors.IdCobroUsuario}
+                      isInvalid={!!errors.IdCobroUsuario}
+                    />
+                    <Form.Control.Feedback>se ve bien</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.IdCobroUsuario}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Form.Group as={Col} md="4" controlId="validationFormik02">
+                    <Form.Label>Monto</Form.Label>
+                    <Form.Control
+                      type="Number"
+                      placeholder="Monto"
+                      name="Monto"
+                      value={chargeValues.Monto}
+                      onChange={handleChange}
+                      isValid={touched.Monto && !errors.Monto}
+                      isInvalid={!!errors.Monto}
+                    />
+                    <Form.Control.Feedback>se ve bien</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.Monto}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group as={Col} md="3" controlId="validationFormik03">
+                    <Form.Label>Id Cliente</Form.Label>
+                    <Form.Control
+                      type="Number"
+                      placeholder="Id Cliente"
+                      name="UserId"
+                      value={chargeValues.UserId}
+                      onChange={handleChange}
+                      isValid={touched.UserId && !errors.UserId}
+                      isInvalid={!!errors.UserId}
+                    />
+                    <Form.Control.Feedback>Se ve bien</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.UserId}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                </Form.Row>
+
+                <Form.Row>
+                  <Form.Group as={Col} md="10" controlId="validationFormik05">
+                    <Form.Label>Nota (opcional)</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      placeholder="Añade una nota para este cobro"
+                      name="Nota"
+                      value={chargeValues.Nota}
+                      onChange={handleChange}
+                      isValid={touched.Nota && !errors.Nota}
+                      isInvalid={!!errors.Nota}
+                    />
+
+                    <Form.Control.Feedback>Se ve bien</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.Fecha}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Form.Row>
+
+                <Form.Group>
+                  <Form.Check
+                    required
+                    name="Terms"
+                    label="Confirmación"
+                    onChange={handleChange}
+                    isInvalid={!!errors.Terms}
+                    iaValid={touched.Terms}
+                    feedback={errors.Terms}
+                    id="validationFormik07"
+                  />
+                </Form.Group>
+
+                <button className="button" type="submit">Aceptar</button>
+                {/* <Button className="btn-EditarPago" type="">Editar</Button> */}
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </Fragment>
+    </>
+  )
+}
+const mapStateToProps = (state) => {
+  return {
+    charges: state.charges.charges,
+    clients: state.clients.clients,
+    editClientsAmount: state.clients.editClientsAmount
+  }
+}
+const mapDispatchToProps = dispatch => bindActionCreators({ ...chargesActions, ...clientsActions }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(ChargeViewEmp)
+

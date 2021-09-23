@@ -1,25 +1,104 @@
-.table-container {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  padding: 50px;
+.actions a {
+  margin-right: 10px;
+}
+.actions.toggled {
+  display: block;
+  margin-right: 10px;
+}
+
+.thead {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.trow {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.lastname {
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.client-type {
+  position: relative;
+}
+.client-type span {
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 13px;
+  padding: 4px 9px;
+  position: absolute;
+}
+.ctype {
+  background-color: #FFEAD9;
+  bottom: 0;
+  color: #A85107;
+  right: 50%;
+}
+.croute {
+  color: #3A01A9;
+  background-color: #EFE0FF;
+  left: 50%;
 }
 
 .btnClient-Container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-.lista--container {
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
-@media only screen and (max-width: 800px) {
-  .table-container {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-  }
+.button-update {
+  background-color: #e2df1bd5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-update:hover {
+  transition: 1s;
+  background-color: #e6e200;
+}
+
+.button-delete {
+  background-color: #f11414cc;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-delete:hover {
+  transition: 1s;
+  background-color: #f11414;
+}
+
+.button-charge {
+  background-color: #00a100cc;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button-charge:hover {
+  transition: 1s;
+  background-color: #00a100da;
+  ;
 }

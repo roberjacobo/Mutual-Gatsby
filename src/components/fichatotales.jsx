@@ -1,35 +1,98 @@
-import React from "react"
+import React, { useState } from "react"
 import "../styles/components/fichatotales.css"
 
+import * as yup from "yup"
+import { Formik } from "formik"
+
+import InputGroup from "react-bootstrap/InputGroup"
+import Form from "react-bootstrap/Form"
+import Col from "react-bootstrap/Col"
+
 import Button from "react-bootstrap/Button"
+import Card from '../icons/credit-card.svg';
+import Group from '../icons/group.svg';
 
-const fichatotales = ({clients}) => {
+const schema = yup.object({
+  cantidadACobrar: yup.number().required()
+})
+
+const FichaTotales = ({
+  //actions
+  clientsTotalAmount,
+  postChargeToClients,
+  totalClients,
+}) => {
+  //inicializa el estado que se enviará con cadenas vacías
+  const [chargeValue, setChargeValue] = useState({
+    cantidadACobrar: 0,
+  })
+
+  const handleChange = event => {
+    event.preventDefault()
+    setChargeValue({
+      ...chargeValue,
+      [event.target.name]: Number(event.target.value),
+    })
+  }
+
+
+  const sendData = async event => {
+    event.preventDefault()
+    await postChargeToClients(chargeValue)
+  }
+
   return (
-    <div>
-      <div className="ficha-container">
-        <div className="ficha">
-          <h2>Totales</h2>
-          <br />
-
-          <h4>Cantidad de Empleados</h4>
-          <label>5555</label>
-          <h4>Ingreso Neto</h4>
-          <label>$ 5555</label>
+    <div className="row">
+      <div className="col">
+        <div className="yellow box">
           <h4>Total de Socios inscritos</h4>
-          <label>{clients.length}</label>
-          <h4>Socios por cobrar</h4>
-          <label>5555</label>
-          <h4>Ingreso Bruto</h4>
-          <label>$ 5555</label>
-
-          <div className="btn-container">
-            <Button variant="dark">Mutual Máster</Button>
-            <Button variant="dark">Mutual Máster (Empresarial)</Button>
-          </div>
+          <Group />
+          <label>{totalClients}</label>
+        </div>
+      </div>
+      <div className="col">
+        <div className="green box">
+          <h4>Adeudo total de socios</h4>
+          <label>${clientsTotalAmount}</label>
+        </div>
+      </div>
+      <div className="col">
+        <div className="white box">
+        <h4>Cantidad a cobrar</h4>
+        <Formik
+              validationSchema={schema}
+              onSubmit={sendData}
+              initialValues={{
+                cantidadACobrar: "",
+              }}
+            >
+              {({ handleBlur, touched, isValid, isInvalid, errors }) => (
+                <Form noValidate onSubmit={sendData} className="row">
+                    <div className="col-8 master-qty">
+                      <Card />
+                      <Form.Control
+                        type="Number"
+                        placeholder="6"
+                        name="cantidadACobrar"
+                        value={chargeValue.cantidadACobrar}
+                        onChange={handleChange}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.cantidadACobrar}
+                      </Form.Control.Feedback>
+                    </div>
+                    <div className="col-4">
+                      <Button type="submit" variant="dark" id="botonCobro">
+                        Máster
+                      </Button>
+                    </div>
+                </Form>
+              )}
+            </Formik>
         </div>
       </div>
     </div>
   )
 }
 
-export default fichatotales
+export default FichaTotales
