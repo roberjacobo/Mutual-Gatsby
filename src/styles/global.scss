@@ -2,6 +2,10 @@ html, body { height: 100%; background-color: rgb(255, 255, 255); }
 
 * { transition: .2s ease-in all; }
 
+a {
+  text-decoration: none !important;
+}
+
 body {
   background-color: #F7F8FA !important;
   margin: 0;
@@ -19,8 +23,10 @@ img {
   padding-top: 50px;
   background-color: white;
 }
-.Layout-general p {
-  font-weight: 300;
+.Layout-general {
+  p {
+    font-weight: 300;
+  }
 }
 
 .header {
@@ -35,8 +41,10 @@ img {
     text-align: center;
 }
 
-.header .textos {
-  margin-top: 152px;
+.header {
+  .textos {
+    margin-top: 152px;
+  }
 }
 
 h1 {
@@ -61,25 +69,10 @@ h2{
   font-weight: 200;
 }
 
-.hero-image {
-  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/imgcover1.jpg"); */
-
-  /* Set a specific height */
-  /* height: 50%; */
-
-  /* Position and center the image to scale nicely on all screens */
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative; */
-}
-
 .video{
   width: 100%;
 }
 
-/* media queries (personalizarlo a su antojo)*/
 @media(max-width: 900px){
 .video{
   width: 150%;

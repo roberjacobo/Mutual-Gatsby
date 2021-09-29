@@ -1,7 +1,5 @@
 import React from "react"
 
-import '../styles/global.css'
-
 import Header from "../components/header"
 import Footer from "../components/footer"
 import Carousel from "../components/carousel"
@@ -9,14 +7,13 @@ import About from "../components/about"
 import Valores from "../components/valores"
 import SEO from "../components/seo"
 
-
 import funerales15 from "../images/funerales(15).jpeg"
 import funerales16 from "../images/funerales(18).jpeg"
 import funerales17 from "../images/funerales(1).jpeg"
 import funerales18 from "../images/funerales(19).jpeg"
 import funerales19 from "../images/funerales(2).jpeg"
-
 import video from "../assets/cover1.mp4"
+import '../styles/global.scss'
 
 export default function Index() {
   return (
