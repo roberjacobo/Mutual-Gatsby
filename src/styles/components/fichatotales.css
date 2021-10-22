@@ -9,10 +9,16 @@
   font-size: 14px;
   text-transform: uppercase;
 }
+.box h5 {
+  display: none;
+}
 
 .box label {
   color: black;
   font-size: 24px;
+}
+.box span {
+  display: none;
 }
 
 .yellow {
@@ -31,10 +37,25 @@
 
 .white {
   background-color: rgba(255,255,255,.8);
-  color: #999
+  color: #999;
 }
 
-@media only screen and (max-width: 980px) {
+.row {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .box {
+    margin: 10px;
+    min-height: fit-content;
+    padding: 10px 24px;
+  }
+  .box h4 {
+    display: none;
+  }
+  .box h5 {
+    display: inline-block;
+  }
 
   .ficha-container {
     width: 100%;

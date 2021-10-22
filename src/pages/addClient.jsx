@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react"
-import "../styles/mutual.css"
+import "../styles/mutual.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import * as clientsActions from "../redux/actions/clients"
 
-import Header from "../components/header"
+import HeaderMutual from "../components/header-mutual"
 import Footer from "../components/footer"
 
 import * as yup from "yup"
@@ -42,9 +42,10 @@ const ClientView = ({
   //props data
   location: { state }
 }) => {
-  const clientList = clients ? clients.data.clients : [];
+  console.log(clients);
+  const clientList = clients ? clients.clients : [];
   const id = state ? state.id : 0;
-  const client = clientList.filter(client => client._id === id)[0] || null;
+  const client = clientList ? clientList.filter(client => client._id === id)[0] : null;
 
   const clientDateIncription = client ? client.FechaInscripcion : '';
   const newClientDateIncription = clientDateIncription.substring(0, 10);
@@ -91,8 +92,8 @@ const ClientView = ({
   }
 
   return (
-    <>
-      <Header />
+    <div className="container">
+      <HeaderMutual />
       <Fragment>
         <div className="label-addClient">
           <Formik
@@ -125,7 +126,7 @@ const ClientView = ({
               errors,
             }) => (
               <Form noValidate onSubmit={sendData}>
-                <Form.Row>
+                <div className="row">
                   <Form.Group as={Col} md="4" controlId="validationFormik00">
                     <Form.Label>Identificador</Form.Label>
                     <Form.Control
@@ -202,9 +203,9 @@ const ClientView = ({
                       </Form.Control.Feedback>
                     </InputGroup>
                   </Form.Group>
-                </Form.Row>
+                </div>
 
-                <Form.Row>
+                <div className="row">
 {/*                   <Form.Group as={Col} md="3" controlId="validationFormik03">
                     <Form.Label>CURP</Form.Label>
                     <Form.Control
@@ -271,9 +272,9 @@ const ClientView = ({
                       {errors.Telefono}
                     </Form.Control.Feedback>
                   </Form.Group>
-                </Form.Row>
+                </div>
 
-                <Form.Row>
+                <div className="row">
                   <Form.Group as={Col} md="3" controlId="validationFormik06">
                     <Form.Label>Colonia</Form.Label>
                     <Form.Control
@@ -324,9 +325,9 @@ const ClientView = ({
                       {errors.Correo}
                     </Form.Control.Feedback>
                   </Form.Group>
-                </Form.Row>
+                </div>
 
-                <Form.Row>
+                <div className="row">
                   <Form.Group as={Col} md="2" controlId="validationFormik010">
                     <Form.Label>Adeudo</Form.Label>
                     <Form.Control
@@ -410,7 +411,7 @@ const ClientView = ({
                       {errors.FechaInscripcion}
                     </Form.Control.Feedback>
                   </Form.Group>
-                </Form.Row>
+                </div>
 
                 <Form.Group>
                   <Form.Check
@@ -431,8 +432,7 @@ const ClientView = ({
           </Formik>
         </div>
       </Fragment>
-      <Footer />
-    </>
+    </div>
   )
 }
 const mapStateToProps = state => {

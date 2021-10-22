@@ -13,10 +13,11 @@ import HeaderMutual from "../components/header-mutual"
 
 import FormControl from "react-bootstrap/FormControl"
 
-import "../styles/mutual.css"
+import "../styles/mutual.scss"
 import SearchIcon from '../icons/zoom.svg';
 import ChevRight from '../icons/chevron-right.svg';
 import ChevLeft from '../icons/chevron-left.svg';
+import AddClient from '../icons/user-add.svg';
 
 function Mutual({
   //actions
@@ -65,7 +66,7 @@ function Mutual({
   }, [logged])
   return (
     <div className="container">
-      <HeaderMutual logout={logout} />
+      <HeaderMutual logout={logout} isMutual />
       <div className="form-container"></div>
       <Fichatotales
           totalClients={clients.totalClients}
@@ -73,23 +74,26 @@ function Mutual({
           postChargeToClients={postChargeToClients}
         />
       <div className="filter row">
-        <div className="search-field col-9">
-          <SearchIcon className="khahaha"/>
+        <div className="search-field col-12 col-sm-8">
+          <SearchIcon />
           <FormControl placeholder="Buscar clientes..." onChange={e => setSearch(e.target.value)} />
           <button style={{marginTop: '-4px;'}} className="btn btn-dark" onClick={() => getClientsSearch(page, search)}>Buscar</button>
         </div>
-        <div className="pagination-field col-3">
+        <div className="pagination-field col-12 col-sm-4">
+          <Link to="/addClient">
+            <button className="btn btn-dark"><AddClient /> Agregar</button>
+          </Link>
           {page > 1 ? (
-            <button onClick={() => previousPage(page, search)}><ChevLeft /></button>
+            <button className="pag-btn" onClick={() => previousPage(page, search)}><ChevLeft /></button>
           ) : null}
           <span>Página {' '}{page}</span>
           {page !== clients.totalPages ? (
-            <button onClick={() => nextPage(page, search)}><ChevRight /></button>
+            <button className="pag-btn" onClick={() => nextPage(page, search)}><ChevRight /></button>
           ) : null}
         </div>
       </div>
       <div className="list">
-        <ClientsList clients={clientList} deleteClient={deleteClient} />
+        <ClientsList role={logged.rol} clients={clientList} deleteClient={deleteClient} />
       </div>
     </div>
   )
@@ -97,7 +101,6 @@ function Mutual({
 
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     clients: state.clients.clients,
     clientsTotalAmount: state.clients.clientsTotalAmount,

@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react"
 
-import "../styles/mutual.css"
+import "../styles/mutual.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 /* import { Link } from "gatsby" */
 

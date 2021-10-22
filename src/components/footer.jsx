@@ -2,7 +2,7 @@ import React from "react"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import "../styles/components/footer.css"
+import "../styles/components/footer.scss"
 import { Link } from "gatsby";
 
 import Logo from "../images/Logo.png"
@@ -14,12 +14,11 @@ export default function Footer () {
           <div className="row">
             <div className="col-md-4 footer-brand animated fadeInLeft">
               <img src={Logo} alt="Logotipo" />
-              <p>© 2021 Funerales Rafael Paz, Desarrollado por <Link target="_blank" to="https://www.quantumstudios.dev">Quantum Studios</Link></p>
+              <p>© 2021 Funerales Rafael Paz. Desarrollado por <Link target="_blank" to="https://www.quantumstudios.dev">Quantum Studios</Link></p>
             </div>
 
-            <div className="col-md-3 footer-nav animated fadeInUp">
-              <div className="col">
-                <ul className="list">
+            <div className="col-md-2 footer-nav animated fadeInUp">
+              <ul className="list">
                   <li>
                     <a>
                       <Link to="/">Sobre nosotros</Link>
@@ -30,6 +29,10 @@ export default function Footer () {
                       <Link to="/">Contacto</Link>
                     </a>
                   </li>
+                </ul>
+            </div>
+            <div className="col-md-2 footer-nav fadeInUp">
+              <ul className="list">
                   <li>
                     <a>
                       <Link to="/">Términos y condiciones</Link>
@@ -41,7 +44,6 @@ export default function Footer () {
                     </a>
                   </li>
                 </ul>
-              </div>
             </div>
 
             <div className="col-md-2 footer-social animated fadeInDown">
@@ -50,7 +52,7 @@ export default function Footer () {
                 <li>
                     <a href="https://www.facebook.com/FuneralesRafaelPaz/">
                       Facebook
-                    </a>            
+                    </a>
                 </li>
               </ul>
             </div>

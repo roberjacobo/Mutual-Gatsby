@@ -1,13 +1,11 @@
 import React from "react"
 
-import "../styles/components/about.css"
+import "../styles/components/about.scss"
 
 const About = () => {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col col-md-8">
-          <h3>Sobre Nosotros</h3>
+    <div className="container about">
+      <h3>Sobre Nosotros</h3>
           <p>
             Empresa líder prestando Servicios Funerarios y venta de Artículos
             Religiosos.
@@ -22,8 +20,6 @@ const About = () => {
             Nos damos a la necesidad de prestar un servicio de excelencia al mejor
             precio con un trato respetuoso, de calidad y digno.
           </p>
-        </div>
-      </div>
     </div>
   )
 }

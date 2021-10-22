@@ -1,58 +1,26 @@
 import React from "react"
+import '../styles/components/valores.scss'
 
 const Valores = () => {
   return (
-    <div>
-      <section className="motivation-wrapper">
+    <section className="motivation-wrapper">
+        <h3>Valores</h3>
         <div className="row">
-          <div className="col-12 col-md-6">
-            <h2>Misión</h2>
+          <div className="col-12 col-md-6 values-text">
             <p>
-              Brindar apoyo con calidez humana a las familias que han perdido un ser querido, otorgando un servicio funerario de paz y tranquilidad en los momentos que más lo necesitan.
-            </p>
-          </div>
-          <div className="col-12 col-md-6">
-            <figure>
-              <img
-                alt="Mision"
-                src="https://images.pexels.com/photos/327533/pexels-photo-327533.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              />
-            </figure>
-          </div>
-        </div>
-        <div className="row motivation-sep">
-          <div className="col-12 col-md-6">
-            <figure>
-              <img
-                alt="Vision"
-                src="https://images.pexels.com/photos/276259/pexels-photo-276259.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              />
-            </figure>
-          </div>
-          <div className="col-12 col-md-6">
-            <h2>Visión</h2>
-            <p>
-              Ser la mejor empresa de servicios funerarios a nivel nacional, dando un trato respetuoso de calidad y digno a todos nuestros clientes.
-            </p>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-12 col-md-6">
-            <h2>Valores</h2>
-            <p>
-              INTEGRIDAD Haciendo siempre lo correcto, demostrando respeto y
+              <strong>INTEGRIDAD</strong> Haciendo siempre lo correcto, demostrando respeto y
               apego a lo que hacemos y lo que representamos.
             </p>
             <p>
-              CALIDAD Ofreciendo a nuestros clientes una asistencia profesional,
+              <strong>CALIDAD</strong> Ofreciendo a nuestros clientes una asistencia profesional,
               integral y humana, a través de la excelencia en el servicio.
             </p>
             <p>
-              HONESTIDAD Comprometiéndonos con la verdad: servicios dignos a
+              <strong>HONESTIDAD</strong> Comprometiéndonos con la verdad: servicios dignos a
               precios justos.
             </p>
             <p>
-              INICIATIVA Manteniendo la vanguardia en servicios funerarios,
+              <strong>INICIATIVA</strong> Manteniendo la vanguardia en servicios funerarios,
               trabajando cada día de manera proactiva, servicial y responsable.
             </p>
           </div>
@@ -65,8 +33,41 @@ const Valores = () => {
             </figure>
           </div>
         </div>
+        <div className="row mision-vision">
+          <div className="col-12 col-sm-6">
+            <div>
+              <h3>Misión</h3>
+              <p>
+                Brindar apoyo con calidez humana a las familias que han perdido un ser querido, otorgando un servicio funerario de paz y tranquilidad en los momentos que más lo necesitan.
+              </p>
+            </div>
+            <div>
+              <figure>
+                <img
+                  alt="Mision"
+                  src="https://images.pexels.com/photos/327533/pexels-photo-327533.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                />
+              </figure>
+            </div>
+          </div>
+          <div className="col-12 col-sm-6">
+            <div>
+              <h3>Visión</h3>
+              <p>
+                Ser la mejor empresa de servicios funerarios a nivel nacional, dando un trato respetuoso de calidad y digno a todos nuestros clientes.
+              </p>
+            </div>
+            <div>
+              <figure>
+                <img
+                  alt="Vision"
+                  src="https://images.pexels.com/photos/276259/pexels-photo-276259.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
       </section>
-    </div>
   )
 }
 

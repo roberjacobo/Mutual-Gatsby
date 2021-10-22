@@ -3,17 +3,17 @@ import { Link } from "gatsby";
 
 import user from "../images/Logo.png"
 
-export default function HeaderMutual({logout}) {
+export default function HeaderMutual({logout, isMutual, isHistory}) {
   return (
     <>
       <div className="mutual-top-header">
         <img className="img-User" src={user} alt="user" />
         <span>
-          <Link className="active" to="/mutual">
+          <Link className={isMutual ? "active" : ""} to="/mutual">
             <button className="cta-link">Clientes</button>
           </Link>
-          <Link to="/historial">
-            <button className="cta-link">Historial de Pagos</button>
+          <Link className={isHistory ? "active" : ""} to="/historial">
+            <button className="cta-link">Historial</button>
           </Link>
           <button onClick={logout} className="btn buttonLogOut">
             Salir

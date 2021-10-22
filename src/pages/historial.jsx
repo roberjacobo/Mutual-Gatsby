@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react"
+import { Link, navigate } from "gatsby"
 
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import * as chargesActions from "../redux/actions/charges"
 
-import Header from "../components/header"
+import HeaderMutual from "../components/header-mutual"
 import Footer from "../components/footer"
 
 import Table from "react-bootstrap/Table"
@@ -13,7 +14,7 @@ const Historial = ({
   charges,
   getCharges,
   deleteCharge,
-/* editCharge */
+  editCharge
 }) => {
 
   const [pagos, setPagos] = useState([])
@@ -27,24 +28,17 @@ const Historial = ({
   }
 
   return (
-    <>
-      <Header />
-      {/*       <div className="btn-form-container">
+    <div className="container">
+      <HeaderMutual isHistory />
+      <div className="btn-form-container">
         <div className="btn-container">
           <Link to="/addClient/">
-            <Button variant="secondary">Suscribir Cliente</Button>
+            <button variant="secondary">Suscribir Cliente</button>
           </Link>
-          <Button variant="success">Registrar Pago</Button>
-          <Button variant="danger">Egreso</Button>
-          <Button variant="warning">Historial de Pagos</Button>
-        </div> */}
-      {/*         <div className="form-container">
-          <p>Buscar</p>
-          <div>
-            <FormControl />
-          </div>
-        </div> */}
-      {/* </div> */}
+          <button variant="success">Registrar Pago</button>
+          <button variant="danger">Egreso</button>
+        </div>
+      </div>
       <div className="table-container">
         <Table striped bordered hover>
           <thead>
@@ -55,7 +49,7 @@ const Historial = ({
               <th>Empleado</th>
               <th>Fecha</th>
               <th>Nota</th>
-              {/*  <th>Acciones</th> */}
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -67,30 +61,30 @@ const Historial = ({
                 <td>{charge.IdEmpleado}</td>
                 <td>{new Date(charge.Fecha).toJSON().slice(0, 10)}</td>
                 <td>{charge.Nota}</td>
-                {/*                 <td>
+                <td>
                   <div className="btnCharge-Container">
-                    <Link to='/Mutual/' state={{ id: charge._id }}>
-                      <Button variant="warning">Actualizar</Button>
+                    <Link to='/mutual/' state={{ id: charge._id }}>
+                      <button variant="warning">Actualizar</button>
                     </Link>
 
-                    <Button
+                    <button
                       onClick={() => handleDelete(charge._id)}
                       variant="danger"
                     >
                       Eliminar
-                </Button>
+                </button>
                   </div>
-                </td> */}
+                </td>
             </tr>
             )) : ""}
           </tbody>
         </Table>
       </div>
-      <Footer />
-    </>
+    </div>
   )
 }
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     charges: state.charges.charges
   }

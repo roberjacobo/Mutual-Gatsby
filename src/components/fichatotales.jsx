@@ -43,22 +43,24 @@ const FichaTotales = ({
 
   return (
     <div className="row">
-      <div className="col">
+      <div className="col-6 col-md-4">
         <div className="yellow box">
           <h4>Total de Socios inscritos</h4>
+          <h5>Socios</h5>
           <Group />
           <label>{totalClients}</label>
         </div>
       </div>
-      <div className="col">
+      <div className="col-6 col-md-4">
         <div className="green box">
           <h4>Adeudo total de socios</h4>
+          <h5>Adeudo</h5>
           <label>${clientsTotalAmount}</label>
         </div>
       </div>
-      <div className="col">
+      <div className="col-12 col-md-4">
         <div className="white box">
-        <h4>Cantidad a cobrar</h4>
+        <h4>Máster</h4>
         <Formik
               validationSchema={schema}
               onSubmit={sendData}
@@ -68,22 +70,21 @@ const FichaTotales = ({
             >
               {({ handleBlur, touched, isValid, isInvalid, errors }) => (
                 <Form noValidate onSubmit={sendData} className="row">
-                    <div className="col-8 master-qty">
-                      <Card />
+                    <div className="col-8 d-none">
                       <Form.Control
                         type="Number"
                         placeholder="6"
                         name="cantidadACobrar"
-                        value={chargeValue.cantidadACobrar}
+                        value={6}
                         onChange={handleChange}
                       />
                       <Form.Control.Feedback type="invalid">
                         {errors.cantidadACobrar}
                       </Form.Control.Feedback>
                     </div>
-                    <div className="col-4">
+                    <div className="col-12">
                       <Button type="submit" variant="dark" id="botonCobro">
-                        Máster
+                        Cobrar
                       </Button>
                     </div>
                 </Form>

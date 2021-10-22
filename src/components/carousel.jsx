@@ -10,10 +10,8 @@ import funerales19 from "../images/funerales(2).jpeg" */
 
 const Carousel = () => {
   return (
-    <>
-      <div className="flexContainer">
-        <h2 className="titulo">Galería</h2>
-      </div>
+    <div className="galery">
+      <h3>Galería</h3>
       <div className="carousel-margin">
         <div className="slider-wrapper">
           <div className="slider">
@@ -28,9 +26,6 @@ const Carousel = () => {
             <div className="slide">
               <figure className="slide-figure">
                 <img className="slide-img" src={funerales15} alt="..." />
-                <figcaption className="slide-caption">
-                  <p>1</p>
-                </figcaption>
               </figure>
               {/* <!-- .slide-figure --> */}
             </div>
@@ -41,9 +36,6 @@ const Carousel = () => {
             <div className="slide">
               <figure className="slide-figure">
                 <img className="slide-img" src={funerales17} alt="..." />
-                <figcaption className="slide-caption">
-                  <p>2</p>
-                </figcaption>
               </figure>
               {/* <!-- .slide-figure --> */}
             </div>
@@ -64,28 +56,28 @@ const Carousel = () => {
           </div>
           {/* <!-- .slider --> */}
 
-          <ul className="slider-nav">
+          {/* <ul className="slider-nav">
             <li className="slider-nav__item">
               <label className="slider-nav__label" for="one">
-                1
+                
               </label>
             </li>
             <li className="slider-nav__item">
               <label className="slider-nav__label" for="two">
-                2
+                
               </label>
             </li>
             <li className="slider-nav__item">
               <label className="slider-nav__label" for="three">
-                3
+                
               </label>
             </li>
-          </ul>
+          </ul> */}
           {/* <!-- .slider-nav --> */}
         </div>
         {/* <!-- .slider-wrapper --> */}
       </div>
-    </>
+    </div>
   )
 }
 

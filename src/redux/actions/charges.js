@@ -16,7 +16,8 @@ const parseCharges = data => ({
 export const getCharges = str => async dispatch => {
   const busqueda = str || ""
   const response = await axios.get(
-    `https://backend-yuy6unuyba-uw.a.run.app/api/charges/?q=${busqueda}`
+    // `https://backend-yuy6unuyba-uw.a.run.app/api/charges/?q=${busqueda}`
+    `localhost:3000/api/charges/?q=${busqueda}`
   )
   const { data } = response
   return dispatch(parseCharges(data))
